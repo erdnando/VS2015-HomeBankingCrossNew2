@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Homebanking-STEFANINI</title>
+    <link href="css/jquery.mobile-1.4.4.min.css" rel="stylesheet" />
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.mobile-1.4.4.min.js"></script>
+    <script src="scripts/br.js"></script>
+    <link rel="stylesheet" media="all and (orientation:portrait)" href="css/style_entradaportrait.css">
+    <link rel="stylesheet" media="all and (orientation:landscape)" href="css/style_entradalandscape.css">
+    <link href="css/css-metro.css" rel="stylesheet" type="text/css">
+    <script src="scripts/js-metro.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <div data-url="demo-page" data-role="page" data-theme="b" class="" style="height:100%;overflow:hidden;">
+
+        <!-- Header -->
+       
+        <div data-role="header" style="background-color:#2F5597">
+            <span style="height:20px;text-align:center;text-shadow:none;font-size:18px;">Problemas con la red...</span>
+        </div>
+
+        <!---End Header-->
+        <!--Main Principal--->
+        <div role="main" class="ui-content" style="height:73%; overflow-y: hidden; overflow-x: hidden; background-image: url('images/fondo-3.jpg');">
+
+            <center>
+                <div style="margin-top:80px">
+                    <img src="images/no-datos.png" height="100" width="100"><br>
+                    <div style="color:ghostwhite" id="error_redMensaje">Sin conexi&oacute;n a internet, Verifique que est&eacute;n activos sus datos o que est&eacute; conectado a una red wifi</div><br>
+                    <input type="image" id="btnReload" src="images/refresh1.png" width="50" height="50" onclick="realoadPage()">
+                </div>
+            </center>
+
+        </div>
+        <!--End Main Principal--->
+        <!--footer-->
+        <!---End Footer--->
+
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+    <script src="scripts/index.js"></script>
+
+</body>
+</html>

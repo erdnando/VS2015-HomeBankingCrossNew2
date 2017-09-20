@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Homebankin-STEFANINI</title>
+
+    <link href="css/jquery.mobile-1.4.4.min.css" rel="stylesheet" />
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.mobile-1.4.4.min.js"></script>
+    <script src="scripts/marknote.js"></script>
+    <script src="scripts/br.js"></script>
+
+
+    <link href="css/jquery.mobile.datepicker.css" rel="stylesheet" />
+    <script src="scripts/jquery.mobile.datepicker.js"></script>
+    <script src="scripts/jquery.ui.datepicker.js"></script>
+    <link rel="stylesheet" media="all and (orientation:portrait)" href="css/style_Bancaportrait.css">
+    <link rel="stylesheet" media="all and (orientation:landscape)" href="css/style_Bancalandscape.css">
+
+
+    <!-- Base de css -->
+    <link href="css/Base.css" rel="stylesheet" />
+
+    <!-- fin css -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="scripts/iscroll.js"></script>-->
+
+    <style>
+        .button {
+            padding: 15px 25px;
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 3px #999;
+        }
+
+        .button:hover {
+                background-color: #3e8e41;
+            }
+
+        .button:active {
+                background-color: #3e8e41;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+
+        
+    </style>
+
+    <script type="text/javascript" id="3">
+    $(document).ready(function () {
+        pageLoadHome();
+        
+    });
+
+
+   
+
+   
+    
+    </script>
+
+
+   
+</head>
+
+<body>
+
+    <div data-role="page" id="pageone" data-url="pageone" tabindex="0" class="ui-page ui-page-theme-a ui-page-active" >
+
+        <div data-role="panel" name="mymenu" id="mymenu" data-position="left" data-display="overlay" 
+             class="ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-inherit ui-panel-animate ui-panel-open"
+             style="width: 90%;overflow-y:hidden">
+            <!-- panel content goes here -->
+            <div class="ui-panel-inner" style="height: 99.9%;/* width: 100%; */">
+                <a href="#my-header" data-rel="close" class="ui-link">
+                    <!--<span style="font-size: 14px;position: absolute;margin-top: 0%;right: 6%;width:11%;">Cerrar</span>-->
+                </a>
+                <div data-role="main" class="ui-content" >
+                    <!--contenido menu-->
+                    <div class="container-fluid" style="height:92vh">  <!--550px-->
+                        <div class="row" style="margin-left: -22%;height: 134vh;overflow-y: hidden;overflow-x: hidden;"><!--840px-->
+                            <div class="container-fluid" style="margin-top: -21px;height: 26%;">
+                                <div class="row">
+                                    <div class="col-sm-3"></div>
+                                    <div bac="" class="col-sm-6">
+                                        <img src="images/menuIzqfondo.jpg" alt="" style="width: 106%;margin-top:10px;margin-left:13px">
+                                        <h5 class="text-center">
+                                             <strong>
+                                              <span id="txtClienteNombreMenu" style="height: 46px;font-size: 12px;position: absolute;margin-top: -7px;left: 2px;width: 100%;">****</span>
+                                            </strong></h5>
+                                        <h4 class="text-center">
+                                            <span id="txtClienteCuentaMenu" style="height: 46px;font-size: 12px;position: absolute;margin-top: 6px;left: 2px;width: 100%;">****</span>
+                                        </h4>
+                                        
+                                    </div>
+
+
+
+
+                                    <div class="col-sm-2"></div>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid" 
+                                 style="width: 104.5%;padding-left: 21px;overflow-x: hidden;overflow-y: hidden;min-height:100vh; height: 100vh;">  <!--650px   500px-->
+
+                                <div class="container-fluid" style="padding-right: 0px;margin: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default" style="margin-bottom: 1%;">
+                                                <div class="panel-body" style="margin: -7px;">
+                                                    <img src="images/Cuentas3.png" alt="Thumbnail Image 1" width="25">
+                                                    <strong><a data-toggle="tab" data-rel="close" href="#frmMisCuentas" onclick="closePanel()" >Mis cuentas</a></strong><br>
+                                                    &emsp;&emsp;<a data-toggle="tab" data-rel="close" href="#frmMovimientos"  onclick="ConsultaMovimiento()">  Consultar movimientos</a><br>
+                                                    &emsp;&emsp; <a data-toggle="tab"  data-rel="close" href="#frmClabe" onclick="ConsultaClabe()">Consultar clabe</a>
+</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid" style="margin-bottom: -5%;padding-right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body" style="margin: -7px;">
+                                                    <img src="images/Pagos3.png" alt="Thumbnail Image 1" width="30">
+                                                    <strong>Pagos</strong><br>
+                                                    &emsp;&emsp;<a data-toggle="tab" data-rel="close" onclick="load('P'); loadCboGenerales('DivServiciosCarga', 'cmbCuentasPropiasServicios', 'construccionComboServicios');" href="#frmPagos"> Pagar un servicio</a><br>    
+                                                    &emsp;&emsp; Pagar un cr&eacute;dito
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid" style="margin-bottom: -5%;padding-right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body" style="margin: -7px;">
+                                                    <img src="images/traspasos3.png" alt="Thumbnail Image 1" width="30">
+                                                    <strong>Traspasos</strong><br>
+                                                    &emsp;&emsp;<a data-toggle="tab" data-rel="close" href="#frmTransCtasPropias" onclick="iniciaCuentasPropias()">Entre cuentas propias</a><br>
+                                                    &emsp;&emsp;<a data-toggle="tab" data-rel="close" href="#frmTransCtasTerceros" onclick="iniciaCuentasTerceros()">A cuentas de terceros</a><br>
+                                                    &emsp;&emsp;<a data-toggle="tab" data-rel="close" href="#frmTransCtasOtros" onclick="iniciaCuentasOtros()">Otros bancos</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid" style="margin-bottom: -5%;padding-right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body" style="margin: -7px;">
+                                                    <img src="images/creditos3.png" alt="Thumbnail Image 1" width="35">
+                                                    <strong>Cr&eacute;ditos</strong><br>
+                                                    &emsp;&emsp;<a data-toggle="tab" data-rel="close" href="#frmDetalleCredito" onclick="iniciaDetalleCredito()">Detalle de cr&eacute;ditos</a><br>
+                                                    &emsp;&emsp;<a data-toggle="tab" data-rel="close" href="#frmMovimientoCredito" onclick="iniciaMovimientosCredito()">Movimientos de cr&eacute;ditos</a>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid" style="margin-bottom: -5%;padding-right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body" style="margin: -7px;">
+                                                    <img src="images/Inversiones3.png" alt="Thumbnail Image 1" width="30">
+                                                    <strong>Inversiones</strong><br>
+                                                    &emsp;&emsp;<a data-toggle="tab" data-rel="close" href="#frmCompraCEDE" onclick="iniciaCompraCEDE()">Compra de instrumento</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                </div>
+
+                                <!--<div class="container-fluid" style="margin-bottom: -5%;padding-right: 0px;">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body" style="margin: -7px;">
+                                                    <img src="images/administracion3.png" alt="Thumbnail Image 1" width="25">
+                                                    <strong>Administraci&oacute;n</strong><br>
+                                                    &emsp;&emsp; Seguridad de la cuenta<br>
+                                                    &emsp;&emsp; Administraci&oacute;n cuentas terceros<br>
+                                                    &emsp;&emsp; Administraci&oacute;n cuentas otros bancos<br>
+                                                    &emsp;&emsp; Administraci&oacute;n de servicios<br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                </div>-->
+
+                                <div class="container-fluid" style="padding-right:0px">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body" style="margin: -7px;">
+                                                    <img src="images/salir3.png" alt="Thumbnail Image 1" width="25">
+                                                    <strong>Cerrar sesi&oacute;n</strong><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <!--end contenido menu-->
+
+                </div>
+            </div>
+
+            <!-- /panel -->
+        </div>
+            </div>
+
+        <div data-role="header" style="background-color:#2F5597;height: 47px;" role="banner" class="ui-header ui-bar-inherit" onclick="closePanel()">
+
+            <a href="#mymenu" class="ui-link ui-btn-left   ui-btn-active ui-btn ui-corner-all" data-role="button" role="button" 
+               style="font-size: 22px;left:5px; background-color: transparent;border-color: transparent;" >
+                <img src="images/menu2.png" id="btnLeftMenu" class="ui-btn-left  ui-btn ui-btn-icon-middle ui-corner-all" 
+                     style="background-color: transparent;top: -7px;left: -8px;width: 50px;">
+            </a>
+
+
+            <img src="images/Logoblanco.png" width="20" id="btnLogo" class="ui-btn-left  ui-btn ui-btn-icon-middle ui-corner-all" style="left: 19%;top: -5px;background-color: transparent;border-color: transparent;width: 200px;height: 59px;">
+
+
+
+            <img src="images/Token.png" width="20" id="btnToken" onclick="goto('area_token.html')" class="ui-btn-right  ui-btn ui-btn-icon-middle ui-corner-all" 
+                 style="background-color: transparent;border-color: transparent;top: 3px;width: 45px;">
+
+        </div>
+
+        <div data-role="header" role="banner" class="ui-header ui-bar-inherit" style="height: 23px;" onclick="closePanel()">
+            <span id="txtClienteDatos" style="height: 46px;font-size: 12px;position: absolute;margin-top: -10px;left: 2px;width: 100%;">****</span>
+            
+            <!--toolbar/tabs-->
+         <div data-role="navbar" class="ui-navbar" role="navigation" style="margin-top: 15px;">
+                <ul class="ui-grid-b ui-grid-duo ui-grid-a ui-grid-d">
+                    <li class="ui-block-a active" >
+                        <div >
+                            <a data-toggle="tab" href="#frmMisCuentas" class="ui-link ui-btn ui-btn-active" aria-expanded="true" style="margin: 0px;width: 64px;height: 54px;border-width: 0px;background-color: transparent;top: 11px;left: 7px;">
+                             <img src="images/Cuentas2.png" id="btnCuentas" onclick="pageLoadHome()" class="ui-btn-left  ui-btn ui-btn-icon-middle ui-corner-all button" style="top: 0px;left: 0px;padding: 0px;width: 92%;">
+                            </a>
+                            <span id="lblCuentas" style="height: 46px; font-size: 11px; position: absolute; margin-top: 3%; left: 4%; width: 11%; color: blue;">Cuentas</span>
+                        </div>
+                    </li>
+                    <li class="ui-block-b">
+                        <div >
+                            <a data-toggle="tab" href="#frmPagosPrincipal" class="ui-link ui-btn ui-btn-active" aria-expanded="true" style="margin: 0px;width: 64px;height: 54px;border-width: 0px;background-color: transparent;top: 11px;left: 7px;">
+                             <img src="images/Pagos2.png" onclick="load('P');" id="btnPagos"  class="ui-btn-left  ui-btn ui-btn-icon-middle ui-corner-all button" style="top: 0px;left: 0px;padding: 0px;width: 92%;">
+                                <!--onclick="load('P'); loadCboGenerales('DivServiciosCarga', 'cmbCuentasPropiasServicios', 'construccionComboServicios');"-->
+                            </a>
+                            <span id="lblPagos" style="height: 46px; font-size: 11px; position: absolute; margin-top: 3%; left: 23%; width: 11%; color: gray;">Pagos</span>
+                        </div>
+                    </li>
+                    <li class="ui-block-c">
+                       
+                        <div>
+                            <a data-toggle="tab" href="#frmTraspasosPrincipal" class="ui-link ui-btn ui-btn-active" aria-expanded="true" style="margin: 0px;width: 65px;height: 54px;border-width: 0px;background-color: transparent;top: 12px;left: 8px;">
+                             <img src="images/traspasos2.png" id="btnTraspasos" onclick="load('T')" class="ui-btn-left  ui-btn ui-btn-icon-middle ui-corner-all button" style="top: 0px;left: -0.1px;padding: 0px;width: 87%;">
+                            </a>
+                            <span id="lblTraspasos" style="height: 46px; font-size: 11px; position: absolute; margin-top: 3%; left: 42%; width: 17%; color: gray;">Traspasos</span>
+                        </div>
+                    </li>
+                    <li class="ui-block-d">
+                       
+                        <div>
+                            <a data-toggle="tab" href="#frmCreditos" class="ui-link ui-btn ui-btn-active" aria-expanded="true" style="margin: 0px;width: 65px;height: 54px;border-width: 0px;background-color: transparent;top: 14px;left: 8px;">
+                             <img src="images/creditos2.png" id="btnCreditos" onclick="load('CC')" class="ui-btn-right  ui-btn ui-btn-icon-middle ui-corner-all button" style="top: 0px;left: -0.1px;padding: 0px;width: 87%;">
+                            </a>
+                            <span id="lblCreditos" style="height: 46px; font-size: 11px; position: absolute; margin-top: 3%; right: 22%; width: 17%; color: gray;">Creditos</span>
+                        </div>
+                    </li>
+                    <li class="ui-block-e">
+                       
+                        <div>
+                            <a data-toggle="tab" href="#frmCompraCEDE" class="ui-link ui-btn ui-btn-active" aria-expanded="true" style="margin: 0px;width: 65px;height: 54px;border-width: 0px;background-color: transparent;top: 12px;left: 8px;">
+                             <img src="images/Inversiones2.png" id="btnInversiones" onclick="iniciaCompraCEDE(); " class="ui-btn-right  ui-btn ui-btn-icon-middle ui-corner-all button" style="top: 0px;left: -0.1px;padding: 0px;width: 87%;">
+                            </a>
+                            <span id="lblInversiones" style="height: 46px; font-size: 11px; position: absolute; margin-top: 3%; right: 1%; width: 17%; color: gray;">Inversiones</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--end toolbar-->
+           
+         </div>
+       
+        <!--tabs ocultos-->
+         <div style='visibility:collapse'>
+             <a id='tabMov' data-toggle="tab" href="#frmMovimientos" class="ui-link ui-btn ui-btn-active" aria-expanded="true" ></a>
+             <a id='tabClabe' data-toggle="tab" href="#frmClabe" class="ui-link ui-btn ui-btn-active" aria-expanded="true"></a>
+             <a id='tabTransPropias' data-toggle="tab" href="#frmTransCtasPropias" class="ui-link ui-btn ui-btn-active" aria-expanded="true"></a>
+             <a id='tabTransTerceros' data-toggle="tab" href="#frmTransCtasTerceros" class="ui-link ui-btn ui-btn-active" aria-expanded="true"></a>
+             <a id='tabTransOtros' data-toggle="tab" href="#frmTransCtasOtros" class="ui-link ui-btn ui-btn-active" aria-expanded="true"></a>
+             <!--<a id='tabCompraCEDE' data-toggle="tab" href="#frmCompraCEDE" class="ui-link ui-btn ui-btn-active" aria-expanded="true"></a>-->
+             <a id='tabDetalleCredito' data-toggle="tab" href="#frmDetalleCredito" class="ui-link ui-btn ui-btn-active" aria-expanded="true"></a>
+             <a id='tabMovCredito' data-toggle="tab" href="#frmMovimientoCredito" class="ui-link ui-btn ui-btn-active" aria-expanded="true"></a>
+          </div>
+
+        <div data-role="main" class="ui-content" style="margin-top: -34%;margin-left: -5px;" onclick="closePanel()">
+           
+            <!--start content wrapper-->      
+            <div id="wrapper" style="margin-top:-14px">
+                <!--start content scroll-->   
+                <!--hay q reducir si se mueve el marco d ela aplicacion de 62 hacia abajo-->   
+                <div id="scroller" style="height:62vh;overflow-y:scroll;overflow-x:hidden" >
+
+                    <!--tab content-->
+                     <div class="tab-content">
+                        <div id="frmMisCuentas" class="tab-pane fade in active" style="margin-top: -23.7px;">
+                          <h4 style="margin-top: 22.8px;">Mis cuentas</h4>
+                          
+                            <div id="divMisCuentas" style="height:700px">
+                                <div id="grdCtasBancarias" ></div>
+                                <div id="grdCreditos" ></div>
+                                <div id="grdInversiones" ></div>
+                                
+                            </div>
+
+                        </div>
+
+                        <div id="frmPagosPrincipal" class="tab-pane fade" style="margin-top: -23.7px;">
+                             <!--aqui-->
+
+                             <h4 style="margin-top: 22.8px;">Pagos</h4><br />
+
+                             <!--tabla carga inicial de pagos de servicio-->
+                             <div class="col-sm-6">
+
+                                 <a data-toggle="tab" onclick="load('P'); loadCboGenerales('DivServiciosCarga', 'cmbCuentasPropiasServicios', 'construccionComboServicios');"
+                                    href="#frmPagos" class="ui-link">
+                                     <div class="panel panel-default">
+                                         <div class="panel-body">
+                                             <img src="images/pagarservicio.png" alt="Thumbnail Image 1" width="80">
+                                             <strong>Pagar un servicio</strong><br>
+                                         </div>
+                                     </div>
+                                 </a>
+                                 <!--loadCboGenerales('DivCreditosCarga', 'cmbCuentasPropiasCreditos', 'construccionComboCreditos');-->
+                                 <a data-toggle="tab" onclick="load('P'); iniciaPagoCreditos();"
+                                    href="#frmPagoCredito" class="ui-link">
+                                     <div class="panel panel-default">
+                                         <div class="panel-body">
+                                             <img src="images/pagocredito.png" alt="Thumbnail Image 1" width="80">
+                                             <strong>Pagar un cr&eacute;dito</strong><br>
+                                         </div>
+                                     </div>
+                                 </a>
+
+                                    
+
+                               </div>
+                            
+
+                            
+
+                         </div>
+
+                        <div id="frmPagos" class="tab-pane fade" style="margin-top: -23.7px;">
+                            <!--aqui-->
+
+                            <h4 style="margin-top: 22.8px;">Pagos de servicio</h4><br/>
+
+                           <!--tabla carga inicial de pagos de servicio-->
+                            <table class="formaTabla" id="tablaPagosServicios">
+                                <thead>
+                                    <tr>
+                                        <th class="cuentasPro1">
+                                            &nbsp;&nbsp;&nbsp;
+                                        </th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+
+                                        <td style="text-align: center;">
+                                            <img id="imgPagos" src="images/pagos_servicios/servicios.jpg" style="width: 27%;" />
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>
+                                           Servicio:
+                                            <select id="cmbPagosSelect" style="opacity:1;" class="cbMovstyle" onchange="cambioImagen()">
+                                                <option selected="selected" value="0">Seleccione un servicio</option>
+                                                <!--<option value="1">Activar nuevo servicio</option>-->
+                                                <option value="2">Televisi&oacute;n e internet</option>
+                                                <option value="3">Luz xxxxxxx</option>
+                                            </select>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Referencia:
+
+                                            <input type="text" maxlength="8" class="form-control" id="txtReferenciaPG" placeholder="Referencia" onKeyPress="return soloNumeros(event)">
+
+
+
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td>
+                                            Cuenta  de Descripci&oacute;n corta de operaci&oacute;n:
+                                            <input type="text" maxlength="8" class="form-control" id="txtCuentaDescripcionPG" placeholder="Cuenta  de Descripci&oacute;n" onKeyPress="return soloNumeros(event)">
+
+
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+
+                                        <td>
+                                            Cuenta de cargo:
+                                            <div id="DivServiciosCarga"></div>  
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>
+                                            Importe
+                                            <input type="text" maxlength="8" class="form-control" id="txtImportePG" placeholder="Importe" onKeyPress="return soloNumeros(event)">
+
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                            
+                            <!--fin tabla carga inicial de pagos de servicio-->
+
+                            <!--tabla carga confirmacion de pagos de servicio-->
+                            <table id="TablaSegundaPagoServicios" class="table table-striped" style="display:none;">
+                                <tbody>
+                                    <tr>
+                                        <td align="center" colspan="2" style="background-color:#059;color: white;padding:4px;">
+                                            <span style="margin-top: -9px;margin-left:5px;right: 19vh;">Confirmaci&oacute;n de datos</span>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>Descripci&oacute;n corta*</strong>
+                                        </td>
+                                        <td>
+                                            <div id="DivPagoServicioDescripcion"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Referencia*</strong>
+                                        </td>
+                                        <td>
+                                            <div id="DivPagoServicioReferencia"></div>
+                                        </td>  
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Descripción corta de operaci&oacute;n:</strong>
+                                        </td>
+                                        <td>
+                                            <div id="DivPagoServiciosDesCorta"></div>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Cuenta  de cargo</strong>
+                                        </td>
+                                        <td>   
+                                            <div id="DivPagoServicioCuentaCargo"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Importe</strong>
+                                        </td>
+                                        <td>
+                                            <div id="DivPagoServiciosImporte"></div>
+                                        </td>   
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                            <!--fin carga confirmacion de pagos de servicio-->
+
+                            <table class="formaTabla" style="margin-top: -10px;">
+                                <thead>
+                                    <tr>
+                                        <th class="colTamanioBtn1">
+                                            &nbsp;&nbsp;&nbsp;
+                                        </th>
+
+                                        <th class="colTamanioBtnCen">
+                                            &nbsp;&nbsp;&nbsp;
+                                        </th>
+
+                                        <th class="colTamanioBtn1">
+                                            &nbsp;&nbsp;&nbsp;
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+
+                                        <td>
+                                            <!--<input type="button" value="Cancelar" class="ui-mini btnFormaCuentas" onclick="CancelarCuentas()">-->
+
+                                            <button id="btnCancelar" onclick="enabletablaPagosServicios()" data-mini="true" data-theme="b" class="formatoBtnCancelarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Cancelar</button>
+
+                                        </td>
+
+                                        <td></td>
+                                        <td>
+                                            <!--<input type="button" value="Aceptar" href="#arriba"  class="btnFormaCuentas " onclick="confirmarCuentas()">-->
+
+                                            <button id="btnAceptar" onclick="validaPagarServicios()" data-mini="true" data-theme="b" class="formatoBtnAceptarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Aceptar</button>
+
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                         <div id="frmPagoCredito" class="tab-pane fade" style="margin-top: -23.7px;">
+                             <!--aqui-->
+
+                             <h4 style="margin-top: 22.8px;">Pagos de cr&eacute;dito</h4><br />
+
+                             <!--tabla carga inicial de pagos de servicio-->
+                             <table class="formaTabla" id="tablaPagosCreditos">
+                                 <thead>
+                                     <tr>
+                                         <th class="cuentasCre1">
+                                             &nbsp;&nbsp;&nbsp;
+                                         </th>
+
+                                     </tr>
+                                 </thead>
+
+                                 <tbody>
+                                     <tr>
+
+                                         <td>
+                                             Cr&eacute;dito:
+                                            <div id="cboCuentasPagoCreditos">
+                                                
+                                            </div>
+
+                                         </td>
+                                     </tr>
+                                     <tr>
+
+                                         <td>
+                                             Cuenta de cargo:
+                                             <div id="DivcboCuentasPagoCreditos">
+                                             </div>
+
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td>
+                                             Cuenta destino:
+
+                                             <div id="DivLBLCuentaPagoCredito" style="font-weight:bold;">
+                                             </div>
+                                         </td>
+
+                                     </tr>
+                                     
+
+                                     
+                                     <tr>
+
+                                         <td>
+                                             Importe a pagar
+                                             <input type="text" maxlength="8" class="form-control" id="txtImporteCredito" placeholder="Importe" onKeyPress="return soloNumeros(event)">
+
+                                         </td>
+                                     </tr>
+
+                                     
+
+
+                                 </tbody>
+                             </table>
+
+                             <!--fin tabla carga inicial de pagos de servicio-->
+                             <!--tabla carga confirmacion de pagos de servicio-->
+                             <table id="TablaSegundaPagoCreditos" class="table table-striped" style="display:none;">
+                                 <tbody>
+                                     <tr>
+                                         <td align="center" colspan="2" style="background-color:#059;color: white;padding:4px;">
+                                             <span style="margin-top: -9px;margin-left:5px;right: 19vh;">Confirmaci&oacute;n de datos</span>
+                                         </td>
+
+                                     </tr>
+
+                                     <tr>
+                                         <td>
+                                             <strong>Descripci&oacute;n corta</strong>
+                                         </td>
+                                         <td>
+                                             <div id="DivCuentaPagoCredito"></div>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td>
+                                             <strong>Cuenta cargo</strong>
+                                         </td>
+                                         <td>
+                                             <div id="DivCuentaOrigenPagoCredito"></div>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td>
+                                             <strong>Cuenta destino:</strong>
+                                         </td>
+                                         <td>
+                                             <div id="DivPagocreditosCuentaOrigen"></div>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td>
+                                             <strong>Importe:</strong>
+                                         </td>
+                                         <td>
+                                             <div id="DivPagoCreditoImporte"></div>
+                                         </td>
+                                     </tr>
+
+                                 </tbody>
+                             </table>
+                             <!--fin carga confirmacion de pagos de servicio-->
+
+                             <table class="formaTabla" style="margin-top: -10px;">
+                                 <thead>
+                                     <tr>
+                                         <th class="colTamanioBtn1">
+                                             &nbsp;&nbsp;&nbsp;
+                                         </th>
+
+                                         <th class="colTamanioBtnCen">
+                                             &nbsp;&nbsp;&nbsp;
+                                         </th>
+
+                                         <th class="colTamanioBtn1">
+                                             &nbsp;&nbsp;&nbsp;
+                                         </th>
+
+
+                                     </tr>
+                                 </thead>
+
+                                 <tbody>
+                                     <tr>
+
+                                         <td>
+                                             <!--<input type="button" value="Cancelar" class="ui-mini btnFormaCuentas" onclick="CancelarCuentas()">-->
+
+                                             <button id="btnCancelarCredito" onclick="cancelacionPagoCredito()" data-mini="true" data-theme="b" class="formatoBtnCancelarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Cancelar</button>
+
+                                         </td>
+
+                                         <td></td>
+                                         <td>
+                                             <!--<input type="button" value="Aceptar" href="#arriba"  class="btnFormaCuentas " onclick="confirmarCuentas()">-->
+
+                                             <button id="btnAceptarCredito" onclick="validaPagarCreditos()" data-mini="true" data-theme="b" class="formatoBtnAceptarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Aceptar</button>
+
+
+                                         </td>
+                                     </tr>
+
+                                 </tbody>
+                             </table>
+
+                         </div>
+
+                        <div id="frmTraspasosPrincipal" class="tab-pane fade" style="margin-top: -23.7px;">
+                          <h4 style="margin-top: 22.8px;">Traspasos</h4><br />
+                          
+                            <div class="col-sm-6">
+
+                                <a data-toggle="tab" data-rel="close" href="#frmTransCtasPropias" onclick="iniciaCuentasPropias()" class="ui-link">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <img src="images/entrecuentas.png" alt="Thumbnail Image 1" width="80">
+                                            <strong>Entre cuentas propias</strong><br>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a data-toggle="tab" data-rel="close" href="#frmTransCtasTerceros" onclick="iniciaCuentasTerceros()" class="ui-link">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <img src="images/Cuentasterceros.png" alt="Thumbnail Image 1" width="80">
+                                            <strong>A cuentas de tercero</strong><br>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a data-toggle="tab" data-rel="close" href="#frmTransCtasOtros" onclick="iniciaCuentasOtros()" class="ui-link">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <img src="images/otrosbancos.png" alt="Thumbnail Image 1" width="80">
+                                            <strong>Otros bancos</strong><br>
+                                        </div>
+                                    </div>
+                                </a>
+</div>
+
+
+                        </div>
+                        
+                        <div id="frmCreditos" class="tab-pane fade" style="margin-top: -23.7px;">
+                          <h4 style="margin-top: 22.8px;">Cr&eacute;ditos</h4>
+                          
+                            <div class="col-sm-6">
+
+                                <a data-toggle="tab" data-rel="close" href="#frmDetalleCredito" onclick="iniciaDetalleCredito()" class="ui-link">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <img src="images/creditos2.png" alt="Thumbnail Image 1" width="80">
+                                            <strong>Detalle de cr&eacute;ditos</strong><br>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a data-toggle="tab" data-rel="close" href="#frmMovimientoCredito" onclick="iniciaMovimientosCredito()" class="ui-link">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <img src="images/Cuentasterceros.png" alt="Thumbnail Image 1" width="80">
+                                            <strong>Movimiento de cr&eacute;ditos</strong><br>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!--<a data-toggle="tab" data-rel="close" href="#frmTransCtasOtros" onclick="iniciaCronograma()" class="ui-link">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <img src="images/otrosbancos.png" alt="Thumbnail Image 1" width="80">
+                                            <strong>Cronograma</strong><br>
+                                        </div>
+                                    </div>
+                                </a>-->
+                            </div>
+
+                        </div>
+
+                        <div id="frmInversiones" class="tab-pane fade" style="margin-top: -23.7px;">
+                          <h4 style="margin-top: 22.8px;">Inversiones</h4>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+
+                        <div id="frmMovimientos" class="tab-pane fade" style="margin-top: -23.7px;">
+                          <h4 style="margin-top: 22.8px;">Movimientos</h4>
+                          
+                            <div id="divMovimientos" style="height:700px">
+                                <!--<span id="lblCuentaSelectedMovs"></span>-->
+
+                                <div id="DivcuantasMovimientosSelect" >
+
+                                </div>
+
+                                <table style="margin-top: 1em;width: 100%;background-color: gainsboro;box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);height: 3em;">
+                                    <tbody>
+                                    <tr style="font-size: 11px;text-align: justify;font-weight: bold;padding-top: 9px;vertical-align: bottom;">
+                                        <td style="padding-right: 0.5em;padding-left: 0.5em;">
+                                            <span >
+                                                Saldo disponible<br /> &nbsp;
+                                            </span>
+                                           
+                                        </td>
+                                        <td style="padding-right: 0.5 em;">
+                                            <span >Saldo<br/> salvo buen cobro</span>
+                                        </td>
+                                        <td>
+                                            <span  style="padding-left: 0.5em;">CLABE <br /> &nbsp;</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="text-align: justify;font-size: 11px;vertical-align: super;">
+                                        <td style="padding-left: 0.5em;">
+                                            <span id="lblSaldoDisponibleMovs" style="font-size: 11px;">
+                                                1000
+                                            </span>
+                                        </td>
+                                        <td><span id="lblSaldoBuenCobroMovs">0.00</span></td>
+                                        <td>
+                                            <span id="lblClabeMovs" style="padding-left: 0.5em;">9898989898989</span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table style="margin-top: 3px;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2" id="tdMovs">
+                                                
+                                                        <select name="cboPeriodosMovs" id="cboPeriodosMovs"  onchange="getMovimientos()" style="opacity:1;" class="cbMovstyle">
+                                                            <option  value="10">Ultimos 10 dias</option>
+                                                            <option value="30">Ultimos 30 dias</option>
+                                                            <option value="90">Ultimos 90 dias</option>
+                                                        </select>
+                                                    
+                                            </td>
+                                            <td style="text-align: end;padding-left: 5em;padding-right: 1em;">
+                                                <!--<a href="#" class="ui-link">Ver estado de cuenta</a>-->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <div id="divGrdMovimientos">
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="frmClabe" class="tab-pane fade" style="margin-top: -23.7px;">
+                            <a name="arriba"></a>
+                             <h4 style="margin-top: 22.8px;">Clabe</h4>
+
+                             <div id="divMovimientos" style="height:700px">
+                                 <!--<span id="lblCuentaSelectedMovs"></span>-->
+
+                                 <div id="DivCuentaClabe">
+
+                                 </div>
+
+                            
+                             </div>
+                         </div>
+
+                        <div id="frmTransCtasPropias" class="tab-pane fade" style="margin-top: -23.7px;">
+                             <h4 style="margin-top: 22.8px;">Traspaso entre mis cuentas
+                             </h4>
+                             <div id="divTransCuentasPropias" style="height:700px; margin-top:-10%;">
+
+                                 <div id="divTransPropias">
+
+                                 </div>
+
+                                 <br/>
+                                 <table  class="formaTabla"  id="formaTablaUno">
+                                     <thead>
+                                         <tr>
+                                             <th class="cuentasPro1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+                                            
+                                         </tr>
+                                     </thead>
+                                         
+                                      <tbody>
+                                        <tr>
+                                         
+                                            <td >
+                                                 Descripci&oacute;n corta*
+                                               <input type="text" maxlength="20" class="form-control" id="txtDescriCorta" placeholder="Descripci&oacute;n corta">
+
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Referencia*
+
+                                                <input type="text" maxlength="7" class="form-control"  id="txtReferencia" placeholder="Referencia" onKeyPress="return soloNumeros(event)">
+                                                
+                                                
+
+                                            </td>
+                                         
+                                        </tr>
+                                        <tr>
+                                          
+                                            <td>
+                                                Cuenta  de cargo
+                                                <div  id="DivCuentasCarga"></div>  
+                                                
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                         
+                                            <td>
+                                                <br/>
+                                                Cuenta  de deposito
+                                                <select id="cmbCuentasPropiasD" style="opacity:1;padding: 3px;font-size: 12px;">
+                                                    
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                           
+                                            <td>
+                                                Importe
+                                                <input type="text" maxlength="8" class="form-control" id="txtImporte" placeholder="Importe" onKeyPress="return soloNumeros(event)">
+                                             
+                                            </td>
+                                        </tr>
+
+                                         
+                                    </tbody>
+                                </table>
+                                 
+                                 <table id="formaTablaSegunda"  class="table table-striped" style="display:none;">
+                                      <tbody>
+                                         <tr>
+                                             <td align="center" colspan="2" style="background-color:#059;color: white;padding:4px;">
+                                             <span style="margin-top: -9px;margin-left:5px;right: 19vh;">Confirmaci&oacute;n de datos</span></td>
+                                             
+                                          </tr>
+                                         
+                                           <tr> 
+                                                 <td >
+                                                   <strong>Descripci&oacute;n corta*</strong>
+</td>
+                                                 <td >
+                                                     <div id="DivDescriCorta2"></div>
+                                                 </td>
+                                           </tr>
+                                          <tr>
+                                              <td >
+                                                  <strong>Referencia*</strong>
+</td>
+                                              <td>
+                                                  <div id="DivReferencia2"></div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td >
+                                                  <strong>Cuenta  de cargo</strong>
+</td>
+                                              <td>
+                                                  <div id="DivCuentasCarga2"></div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td >
+                                                  <strong>Cuenta  de deposito</strong>
+</td>
+                                              <td>
+                                                  <div id="DivcmbCuentasPropiasD2"></div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td >
+                                                  <strong>Importe</strong>
+</td>
+                                              <td>
+                                                  <div id="DivImporte2"></div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td >
+                                                  <strong> Moneda</strong>
+</td>
+                                              <td>
+                                                  <div id="DivImporte2">MXN</div>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td >
+                                                  <strong>Fecha de aplicacion</strong>
+</td>
+                                              <td>
+                                                 <div id="DivFechaa2"></div>
+                                              </td>
+                                          </tr>
+
+                                       </tbody>
+                                 </table>                       
+                                 
+                                 <table class="formaTabla" style="margin-top: -10px;">
+                                     <thead>
+                                         <tr>
+                                             <th class="colTamanioBtn1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                             <th class="colTamanioBtnCen">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                             <th class="colTamanioBtn1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+
+                                         </tr>
+                                     </thead>
+
+                                     <tbody>
+                                         <tr>
+
+                                             <td>
+                                                 <!--<input type="button" value="Cancelar" class="ui-mini btnFormaCuentas" onclick="CancelarCuentas()">--> 
+
+                                                 <button id="btnCancelar" onclick="enabletablaTransfPropias()" data-mini="true" data-theme="b" class="formatoBtnCancelarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Cancelar</button>
+
+                                             </td>
+
+                                             <td>
+                                                
+                                             </td>
+                                             <td>
+                                                 <!--<input type="button" value="Aceptar" href="#arriba"  class="btnFormaCuentas " onclick="confirmarCuentas()">-->
+                                             
+                                                 <button id="btnAceptar" onclick="confirmarCuentas()" data-mini="true" data-theme="b"  class="formatoBtnAceptarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Aceptar</button>
+                                             
+                                             
+                                             </td>
+                                         </tr>
+                                        
+                                     </tbody>
+                                 </table>
+  
+                             </div>
+                         </div>
+                         
+                        <div id="frmTransCtasTerceros" class="tab-pane fade" style="margin-top: -23.7px;">
+                             <h4 style="margin-top: 22.8px;">
+                                 Traspaso a cuentas de terceros
+                             </h4>
+                             <div id="divTransCuentasTerceros" style="height:700px; margin-top:-10%;">
+
+                                 <div id="divTransTerceros">
+
+                                 </div>
+
+                                 <br />
+                                 <table class="formaTabla" id="formaTablaUnoTerceros">
+                                     <thead>
+                                         <tr>
+                                             <th class="cuentasPro1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                         </tr>
+                                     </thead>
+
+                                     <tbody>
+                                         <tr>
+
+                                             <td>
+                                                 Descripci&oacute;n corta*
+                                                 <input type="text" maxlength="20" class="form-control" id="txtDescriCortaTerceros" placeholder="Descripci&oacute;n corta">
+
+
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 Referencia*
+                                                 <input type="text" maxlength="8" class="form-control" id="txtReferenciaTerceros" placeholder="Referencia" onKeyPress="return soloNumeros(event)">
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 Cuenta  de cargo
+                                                 <div id="DivCuentasCargaTerceros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+
+                                             <td>
+                                                 <br />
+                                                 Cuenta  de deposito
+                                                 <div id="DivCuentasDestinoTerceros" ></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+
+                                             <td>
+                                                 Importe
+                                                 <input type="text" maxlength="8" class="form-control" id="txtImporteTerceros" placeholder="Importe" onKeyPress="return soloNumeros(event)">
+
+                                             </td>
+                                         </tr>
+
+
+                                     </tbody>
+                                 </table>
+
+                                 <table id="formaTablaSegundaTerceros" class="table table-striped" style="display:none;">
+                                     <tbody>
+                                         <tr>
+                                             <td align="center" colspan="2" style="background-color:#059;color: white;padding:4px;">
+                                                 <span style="margin-top: -9px;margin-left:5px;right: 19vh;">Confirmaci&oacute;n de datos</span>
+                                             </td>
+
+                                         </tr>
+
+                                         <tr>
+                                             <td>
+                                                 <strong>Descripci&oacute;n corta*</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivDescriCorta2Terceros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Referencia*</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivReferencia2Terceros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Cuenta  de cargo</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivCuentasCarga2Terceros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Cuenta  de deposito</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivcmbCuentasTercerosD2"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Importe</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivImporte2Terceros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong> Moneda</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivImporte2Terceros">MXN</div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Fecha de aplicaci&oacute;n</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivFechaa2Terceros"></div>
+                                             </td>
+                                         </tr>
+
+                                     </tbody>
+                                 </table>
+
+                                 <table class="formaTabla" style="margin-top: -10px;">
+                                     <thead>
+                                         <tr>
+                                             <th class="colTamanioBtn1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                             <th class="colTamanioBtnCen">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                             <th class="colTamanioBtn1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+
+                                         </tr>
+                                     </thead>
+
+                                     <tbody>
+                                         <tr>
+
+                                             <td>
+                                                 <!--<input type="button" value="Cancelar" class="ui-mini btnFormaCuentas" onclick="CancelarCuentas()">-->
+
+                                                 <button id="btnCancelarTerceros" onclick="enabletablaTransfTerceros()" data-mini="true" data-theme="b" class="formatoBtnCancelarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Cancelar</button>
+
+                                             </td>
+
+                                             <td></td>
+                                             <td>
+                                                 <!--<input type="button" value="Aceptar" href="#arriba"  class="btnFormaCuentas " onclick="confirmarCuentas()">-->
+
+                                                 <button id="btnAceptarTerceros" onclick="confirmarCuentasTerceros()" data-mini="true" data-theme="b" class="formatoBtnAceptarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Aceptar</button>
+
+
+                                             </td>
+                                         </tr>
+
+                                     </tbody>
+                                 </table>
+
+                             </div>
+                         </div>
+
+                        <div id="frmTransCtasOtros" class="tab-pane fade" style="margin-top: -23.7px;">
+                             <h4 style="margin-top: 22.8px;">
+                                 Traspaso a otros bancos
+                             </h4>
+                             <div id="divTransCuentasOtros" style="height:700px; margin-top:-10%;">
+
+                                 <div id="divTransOtros">
+
+                                 </div>
+
+                                 <br />
+                                 <table class="formaTabla" id="formaTablaUnoOtros">
+                                     <thead>
+                                         <tr>
+                                             <th class="cuentasPro1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                         </tr>
+                                     </thead>
+
+                                     <tbody>
+                                         <tr>
+
+                                             <td>
+                                                 Descripci&oacute;n corta*
+                                                 <input type="text" maxlength="20" class="form-control" id="txtDescriCortaOtros" placeholder="Descripci&oacute;n corta">
+
+
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 Referencia*
+
+                                                 <input type="text" maxlength="8" class="form-control" id="txtReferenciaOtros" placeholder="Referencia" onKeyPress="return soloNumeros(event)">
+
+
+
+                                             </td>
+
+                                         </tr>
+                                         <tr>
+
+                                             <td>
+                                                 Cuenta  de cargo
+                                                 <div id="DivCuentasCargaOtros"></div>
+
+
+                                             </td>
+                                         </tr>
+                                         <tr>
+
+                                             <td>
+                                                 <br />
+                                                 Cuenta  de deposito
+                                                 <div id="DivCuentasDestinoOtros"></div>
+
+                                             </td>
+                                         </tr>
+                                         <tr>
+
+                                             <td>
+                                                 Importe
+                                                 <input type="text" maxlength="8" class="form-control" id="txtImporteOtros" placeholder="Importe" onKeyPress="return soloNumeros(event)">
+
+                                             </td>
+                                         </tr>
+
+
+                                     </tbody>
+                                 </table>
+
+                                 <table id="formaTablaSegundaOtros" class="table table-striped" style="display:none;">
+                                     <tbody>
+                                         <tr>
+                                             <td align="center" colspan="2" style="background-color:#059;color: white;padding:4px;">
+                                                 <span style="margin-top: -9px;margin-left:5px;right: 19vh;">Confirmaci&oacute;n de datos</span>
+                                             </td>
+
+                                         </tr>
+
+                                         <tr>
+                                             <td>
+                                                 <strong>Descripci&oacute;n corta*</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivDescriCorta2Otros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Referencia*</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivReferencia2Otros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Cuenta  de cargo</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivCuentasCarga2Otros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Cuenta  de deposito</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivcmbCuentasOtrosD2"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Importe</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivImporte2Otros"></div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong> Moneda</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivImporte2Otros">MXN</div>
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <strong>Fecha de aplicaci&oacute;n</strong>
+                                             </td>
+                                             <td>
+                                                 <div id="DivFechaa2Otros"></div>
+                                             </td>
+                                         </tr>
+
+                                     </tbody>
+                                 </table>
+
+                                 <table class="formaTabla" style="margin-top: -10px;">
+                                     <thead>
+                                         <tr>
+                                             <th class="colTamanioBtn1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                             <th class="colTamanioBtnCen">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                             <th class="colTamanioBtn1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+
+                                         </tr>
+                                     </thead>
+
+                                     <tbody>
+                                         <tr>
+                                             <td>
+                                                 <!--<input type="button" value="Cancelar" class="ui-mini btnFormaCuentas" onclick="CancelarCuentas()">-->
+                                                 <button id="btnCancelarOtros" onclick="enabletablaTransfOtros()" data-mini="true" data-theme="b" class="formatoBtnCancelarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Cancelar</button>
+                                             </td>
+                                             <td></td>
+                                             <td>
+                                                 <!--<input type="button" value="Aceptar" href="#arriba"  class="btnFormaCuentas " onclick="confirmarCuentas()">-->
+                                                 <button id="btnAceptarOtros" onclick="confirmarCuentasOtros()" data-mini="true" data-theme="b" class="formatoBtnAceptarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Aceptar</button>
+
+                                             </td>
+                                         </tr>
+
+                                     </tbody>
+                                 </table>
+
+                             </div>
+                         </div>
+
+                         <div id="frmCompraCEDE" class="tab-pane fade" style="margin-top: -23.7px;">
+                             <h4 style="margin-top: 22.8px;">
+                                 Compra de CEDE
+                             </h4>
+                             <div id="divCompraCEDE" style="height:700px; margin-top:-10%;">
+
+                                 <div id="divCEDE">
+
+                                 </div>
+
+                                 <br />
+                                <!--cede-->
+                                 <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
+                                     <div class="row">
+                                         <div class="col-xs-12 col-sm-3"></div>
+                                         <div class="col-xs-12 col-sm-6" style="margin-top: 8px">
+                                             <div class="well" style="padding: 7px !important;">
+                                                 <table style="width:100%">
+                                                     <tr>
+                                                         <td width="110px">Producto</td>
+                                                         <td>
+                                                             <div class="btn-group dropup" style="width:100%;margin-left: 2px;">
+                                                                 <div id="divCboProductosCEDE"></div>
+                                                             </div>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+                                                 
+                                                 
+                                             </div>
+                                             <div class="well" style="padding: 7px !important;">
+                                                 <table style="width:100%">
+                                                     <tr>
+                                                         <td width="110px">
+                                                             Plazo
+                                                         </td>
+                                                         <td>
+                                                             <div class="btn-group dropup" style="width:100%;margin-left: 2px;">
+                                                                 <div id="divCboPlazosCEDE"></div>
+                                                             </div>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+                                             </div>
+                                             <div class="well" style="padding: 7px !important;">
+                                                 <table style="width:100%">
+                                                     <tr>
+                                                         <td width="110px">
+                                                             Periodicidad
+                                                         </td>
+                                                         <td>
+                                                             <div class="btn-group dropup" style="width:100%;margin-left: 2px;">
+                                                                 <div id="divCboPeriodicidadCEDE"></div>
+                                                             </div>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+
+                                             </div>
+                                             <div class="well" style="padding: 7px !important;">
+                                                 <table style="width:100%">
+                                                     <tr>
+                                                         <td width="110px">
+                                                             Moneda
+                                                         </td>
+                                                         <td>
+                                                             <div class="btn-group dropup" style="width:100%;margin-left: 2px;">
+                                                                 <div id="divCboMonedasCEDE"></div>
+                                                             </div>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+
+                                             </div>
+                                             <div class="well" style="padding: 7px !important;">
+                                                 <table style="width:100%">
+                                                     <tr>
+                                                         <td width="110px">
+                                                             Cuenta de cargo
+                                                         </td>
+                                                         <td>
+                                                             <div class="btn-group dropup" style="width:100%;margin-left: 2px;">
+                                                                 <div id="divCboCuentasCargoCEDE"></div>
+                                                             </div>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+
+                                             </div>
+
+                                             <div class="well">
+                                                 <table style="width:100%">
+                                                     <tr>
+                                                         <td width="110px">
+                                                             <label for="number">Importe </label>
+                                                         </td>
+                                                         <td>
+                                                             <div class="btn-group dropup" style="width:114%;margin-left: -10px;">
+                                                                 <input name="number" type="number" id="txtImporteCEDEs" placeholder="0 MXN">
+                                                             </div>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+
+                                                 
+                                                 
+                                             </div>
+
+                                             <div class="well" style="padding: 7px !important;">
+                                                 <table style="width:100%">
+                                                     <tr>
+                                                         <td width="110px">
+                                                             Instrucci&oacute;n al vencimiento
+                                                         </td>
+                                                         <td>
+                                                             <div class="btn-group dropup" style="width:100%;margin-left: 2px;">
+                                                                 <div id="divInstruccionesCEDE"></div>
+                                                             </div>
+                                                         </td>
+                                                     </tr>
+                                                 </table>
+
+
+                                                 
+                                                 
+                                             </div>
+                                         </div>
+                                         <div class="col-xs-12 col-sm-1"></div>
+                                     </div>
+                                 </div>
+
+                                 <table class="formaTabla" style="margin-top: -10px;">
+                                     <thead>
+                                         <tr>
+                                             <th class="colTamanioBtn1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                             <th class="colTamanioBtnCen">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+                                             <th class="colTamanioBtn1">
+                                                 &nbsp;&nbsp;&nbsp;
+                                             </th>
+
+
+                                         </tr>
+                                     </thead>
+
+                                     <tbody>
+                                         <tr>
+                                             <td>
+                                                 <!--<input type="button" value="Cancelar" class="ui-mini btnFormaCuentas" onclick="CancelarCuentas()">-->
+                                                 <button id="btnCancelarCEDEs" onclick="gotoHome()" data-mini="true" data-theme="b" class="formatoBtnCancelarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Cancelar</button>
+                                             </td>
+                                             <td></td>
+                                             <td>
+                                                 <!--<input type="button" value="Aceptar" href="#arriba"  class="btnFormaCuentas " onclick="confirmarCuentas()">-->
+                                                 <button id="btnAceptarCEDEs" onclick="compraCEDES()" data-mini="true" data-theme="b" class="formatoBtnAceptarGen   btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">Aceptar</button>
+
+                                             </td>
+                                         </tr>
+
+                                     </tbody>
+                                 </table>
+                                <!--end cede-->
+                             </div>
+                         </div>
+
+                         <div id="frmDetalleCredito" class="tab-pane fade" style="margin-top: -23.7px;">
+                             <h4 style="margin-top: 22.8px;">Detalle del Cr&eacute;dito</h4>
+
+                             <div id="divDetalleCredito" style="height:700px">
+                                
+                                 <!--cbo cuentas credito-->
+                                 <div id="divCboCuentasDetalleCredito">
+
+                                 </div>
+                                 <table>
+                                     <tr>
+                                       <td>
+                                           <div id="divTablaDetalleCredito"></div>
+                                       </td>
+                                     </tr>
+                                     <tr></tr>
+                                     <tr></tr>
+                                     <tr></tr>
+                                 </table>
+
+                              
+                             </div>
+                         </div>
+
+                         <div id="frmMovimientoCredito" class="tab-pane fade" style="margin-top: -23.7px;">
+                             <h4 style="margin-top: 22.8px;">Movimientos del cr&eacute;dito</h4>
+
+                             <div id="divMovimientosCredito" style="height:700px">
+                                
+                                 <div id="DivCuentasMovimientosCreditosSelect">
+
+                                 </div>
+
+                                 
+                                 <table style="margin-top: 3px;">
+                                     <tbody>
+                                         <tr>
+                                             <td colspan="2" id="tdMovs">
+
+                                                 <!--<select name="cboPeriodosMovs" id="cboPeriodosMovs" onchange="getMovimientos()" style="opacity:1;" class="cbMovstyle">
+                                                     <option value="10">Ultimos 10 dias</option>
+                                                     <option value="30">Ultimos 30 dias</option>
+                                                     <option value="90">Ultimos 90 dias</option>
+                                                 </select>-->
+
+                                             </td>
+                                             <td style="text-align: end;padding-left: 5em;padding-right: 1em;">
+                                               
+                                             </td>
+                                         </tr>
+                                         <tr>
+                                             <td colspan="3">
+                                                 <div id="divGrdCreditoMovimientos">
+
+                                                 </div>
+                                             </td>
+                                         </tr>
+                                     </tbody>
+                                 </table>
+                             </div>
+                         </div>
+
+
+
+
+
+
+
+
+
+                      </div>
+                     <!--end tab content-->
+
+                 </div>
+                    <!--end content scroll-->
+
+                </div>
+            
+        </div>
+        <!--end content wrapper-->
+
+        <!--<div data-role="footer">
+            <h1>My Footer</h1>
+        </div>-->
+     </div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="alertGeneral" role="dialog" data-backdrop="static" data-keyboard="false" style="z-index:20000;">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content  posicionAlert">
+            <div class="modal-header  cabeceraFontAlert">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+                    <div class="modal-title" id='TituloModal'></div>
+            </div>
+            <div class="modal-body">
+                <div id="contenidoModal"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="seguir()" id="closeAlert">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

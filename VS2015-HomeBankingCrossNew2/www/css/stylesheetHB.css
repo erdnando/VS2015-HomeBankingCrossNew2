@@ -1,0 +1,527 @@
+﻿/*Tipo de letras*/
+.my-page .ui-content h2,
+.my-page .ui-content p{
+ font-family: Arial,sans-serif;
+}
+.my-page .ui-content{
+float:center;
+align-item: center;
+}
+#list1{
+float:center;
+align-item: center;
+}
+/* A bit custom styling*/
+.my-page .ui-listview li .ui-btn p {
+    color: #c0c0c0;
+}
+.my-page .ui-listview li .ui-btn .ui-li-aside {
+    color: #eee;
+}
+.a:link{text-decoration: none; color: white;}
+.my-page .ui-listview .ui-li-aside {
+        padding: 0 0;
+        width: auto;
+        min-height: 0;
+        top: 0;
+        left: auto;
+        bottom: auto;
+        /* Custom styling. */
+        background:#064EA4;
+       /* background: rgba(153,0,153,.85);*/
+        -webkit-border-top-right-radius: inherit;
+        border-top-right-radius: inherit;
+        -webkit-border-bottom-left-radius: inherit;
+        border-bottom-left-radius: inherit;
+        -webkit-border-bottom-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    /* If you want to add shadow, don't kill the focus style. */
+    .my-page .ui-listview li {
+        -moz-box-shadow: 0px 0px 9px #111;
+        -webkit-box-shadow: 0px 0px 9px #111;
+        box-shadow: 0px 0px 9px #111;
+    }
+    /* Images mask the hover bg color so we give desktop users feedback by applying the focus style on hover as well. */
+    .my-page .ui-listview li > .ui-btn:hover {
+        -moz-box-shadow: 0px 0px 12px #33ccff;
+        -webkit-box-shadow: 0px 0px 12px #33ccff;
+        box-shadow: 0px 0px 12px #33ccff;
+    }
+    /* Animate focus and hover style, and resizing. */
+    .my-page .ui-listview li,
+    .my-page .ui-listview .ui-btn {
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+
+/*Para crear 1 columna*/
+@media ( min-width: 0em ) {
+    .my-page .ui-content {
+        padding: 0em; /* 9px */
+    }
+    .my-page .ui-listview li {
+        float: left;
+        width: 80.9333%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: auto;/*8.5em;  232p */
+        margin: .5625em 1.2%;
+    }
+    .my-page .ui-listview li < .ui-btn {
+        -webkit-box-sizing: border-box; /* include padding and border in height so we can set it to 100% */
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+    }
+    .my-page .ui-listview li.ui-li-has-thumb .ui-li-thumb {
+        height: auto; /* To keep aspect ratio. */
+        max-width: 100%;
+        max-height: none;
+    }
+    /* Make all list items and anchors inherit the border-radius from the UL. */
+    .my-page .ui-listview li,
+    .my-page .ui-listview li .ui-btn,
+    .my-page .ui-listview .ui-li-thumb {
+        -webkit-border-radius: inherit;
+        border-radius: inherit;
+    }
+    /* Hide the icon */
+    .my-page .ui-listview .ui-btn-icon-right:after {
+        display: none;
+    }
+    /* Make text wrap. */
+    .my-page .ui-listview p {
+        white-space: normal;
+        overflow: visible;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+   
+    /* ui-li-aside has class .ui-li-desc as well so we have to override some things. */
+    
+.ui-listview .ocultar{
+display:none;
+}
+#relativo{
+display:block;
+margin: auto;
+}
+
+.my-page .letraa{
+font-size: 5pt; 
+padding-left: 3pt;
+}
+.my-submenu .letra{
+font-size: 10pt; 
+}
+}
+.my-page .letraf{
+    font-size:10pt;
+}
+
+
+
+/*Para crear 2 columnas sin texto mayor a 340px  a 600px*/
+@media ( min-width: 16em ) {
+   .my-page .ui-content {
+        padding: 0em; /* 9px */
+    }
+    .my-page .ui-listview li {
+        float: left;
+        width: 30%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: auto;/*8.5em;  232p */
+        margin: 1em i.2%;
+    }
+    .my-page .ui-listview li < .ui-btn {
+        -webkit-box-sizing: border-box; /* include padding and border in height so we can set it to 100% */
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        height: auto;
+    }
+    .my-page .ui-listview li.ui-li-has-thumb .ui-li-thumb {
+        height: auto; /* To keep aspect ratio. */
+        max-width: 90%;
+        max-height: none;
+    }
+    /* Make all list items and anchors inherit the border-radius from the UL. */
+    .my-page .ui-listview li,
+    .my-page .ui-listview li .ui-btn,
+    .my-page .ui-listview .ui-li-thumb {
+        -webkit-border-radius: inherit;
+        border-radius: inherit;
+    }
+    /* Hide the icon */
+    .my-page .ui-listview .ui-btn-icon-right:after {
+        display: none;
+    }
+    /* Make text wrap. */
+    .my-page .ui-listview p {
+        white-space: normal;
+        overflow: visible;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+   
+    /* ui-li-aside has class .ui-li-desc as well so we have to override some things. */
+   
+.ui-listview .ocultar{
+display:none;
+}
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:3.7%;
+}
+#relativo{
+display:block;
+margin: auto;
+}
+
+.my-page .letraa{
+font-size: 9pt; 
+padding-left: 3pt;
+}
+.my-submenu .letra{
+font-size: 10pt; 
+}
+}
+.my-page .letraf{
+font-size: 9pt; 
+}
+
+
+
+/*Para crear 2 columnas sin texto mayor a 340px  a 600px*/
+@media ( min-width: 18.5em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:5.2%;
+}
+}
+
+/*Para crear 2 columnas sin texto mayor a 340px  a 600px*/
+@media ( min-width: 19.5em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:5.7%;
+}
+}
+
+
+/*Para crear 2 columnas sin texto mayor a 340px  a 600px*/
+@media ( min-width: 22em ) {
+   .my-page .ui-content {
+        padding: 0em; /* 9px */
+    }
+    .my-page .ui-listview li {
+        float: left;
+        width: 30%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: auto;/*8.5em;  232p */
+        margin: 1em i.2%;
+    }
+    .my-page .ui-listview li < .ui-btn {
+        -webkit-box-sizing: border-box; /* include padding and border in height so we can set it to 100% */
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        height: auto;
+    }
+    .my-page .ui-listview li.ui-li-has-thumb .ui-li-thumb {
+        height: auto; /* To keep aspect ratio. */
+        max-width: 90%;
+        max-height: none;
+    }
+    /* Make all list items and anchors inherit the border-radius from the UL. */
+    .my-page .ui-listview li,
+    .my-page .ui-listview li .ui-btn,
+    .my-page .ui-listview .ui-li-thumb {
+        -webkit-border-radius: inherit;
+        border-radius: inherit;
+    }
+    /* Hide the icon */
+    .my-page .ui-listview .ui-btn-icon-right:after {
+        display: none;
+    }
+    /* Make text wrap. */
+    .my-page .ui-listview p {
+        white-space: normal;
+        overflow: visible;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+   
+    
+.ui-listview .ocultar{
+display:none;
+}
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:6.3%;
+}
+#relativo{
+display:block;
+margin: auto;
+}
+
+.my-page .letraa{
+font-size: 9pt; 
+padding-left: 3pt;
+}
+.my-page .letraf{
+font-size: 9pt; 
+}
+.my-submenu .letra{
+font-size: 10pt; 
+}
+}
+
+
+/*Para crear 2 columnas con texto mayores a 600 px*/
+@media ( min-width: 25em ) {
+    .my-page .ui-content {
+        padding: .5625em; /* 9px */
+    }
+    .my-page .ui-listview li {
+        float: left;
+        width: 35%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: auto; /* 232p */
+        margin: .5625em 1.2%;
+    }
+    .my-page .ui-listview li > .ui-btn {
+        -webkit-box-sizing: border-box; /* include padding and border in height so we can set it to 100% */
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+    }
+    .my-page .ui-listview li.ui-li-has-thumb .ui-li-thumb {
+        height: auto; /* To keep aspect ratio. */
+        max-width: 100%;
+        max-height: none;
+    }
+    /* Make all list items and anchors inherit the border-radius from the UL. */
+    .my-page .ui-listview li,
+    .my-page .ui-listview li .ui-btn,
+    .my-page .ui-listview .ui-li-thumb {
+        -webkit-border-radius: inherit;
+        border-radius: inherit;
+    }
+    /* Hide the icon */
+    .my-page .ui-listview .ui-btn-icon-right:after {
+        display: none;
+    }
+    /* Make text wrap. */
+    .my-page .ui-listview h2,
+    .my-page .ui-listview p {
+        white-space: normal;
+        overflow: visible;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    /* Text position */
+    .my-page .ui-listview h2 {
+        font-size: 1.25em;
+        margin: 0;
+        padding: .125em 1em;
+        bottom: 50%;
+    }
+    .my-page .ui-listview p {
+        font-size: 1em;
+        margin: 0;
+        padding: 0 1.25em;
+        min-height: 50%;
+        bottom: 0;
+    }
+
+    .ui-listview .ui-li-has-thumb h2 {
+        bottom: 35%;
+    }
+    .ui-listview .ui-li-has-thumb p {
+        min-height: 35%;
+    }
+  
+.ui-listview .ocultar{
+display:initial;
+}
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:4.2%;
+}
+#relativo{
+display:block;
+margin: auto;
+}
+
+
+.my-page .letrah{
+font-size: 9pt; 
+}
+.my-page .letrap{
+font-size: 12pt; 
+}
+.my-page .letraa{
+font-size: 9pt; 
+padding-left: 3pt;
+}
+.my-page .letraf{
+font-size: 9pt; 
+}
+
+.my-submenu .letra{
+font-size: 11pt; 
+}
+}
+
+/*Para crear 2 columnas con texto mayores a 600 px*/
+@media ( min-width: 31em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:5%;
+}
+}
+
+
+/*Para crear 2 columnas con texto mayores a 600 px*/
+@media ( min-width: 37em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:5.45%;
+}
+}
+
+/*Para crear 2 columnas con texto mayores a 600 px*/
+@media ( min-width: 43em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:5.55%;
+}
+}
+
+
+/*Para crear 3 columnas*/
+/* First breakpoint is 48em (768px). 3 column layout. Tiles 250x250 pixels incl. margin at the breakpoint. */
+@media ( min-width: 42.5em ) {
+    .my-page .ui-content {
+        padding: .5625em; /* .5625em;   9px */
+    }
+    .my-page .ui-listview li {
+        float: left;
+        width: 25%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: auto; /* 232p */
+        margin: .3em 1.2%;
+    }
+    .my-page .ui-listview li > .ui-btn {
+        -webkit-box-sizing: border-box; /* include padding and border in height so we can set it to 100% */
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+    }
+    .my-page .ui-listview li.ui-li-has-thumb .ui-li-thumb {
+        height: auto; /* To keep aspect ratio. */
+        max-width: 100%;
+        max-height: none;
+    }
+    /* Make all list items and anchors inherit the border-radius from the UL. */
+    .my-page .ui-listview li,
+    .my-page .ui-listview li .ui-btn,
+    .my-page .ui-listview .ui-li-thumb {
+        -webkit-border-radius: inherit;
+        border-radius: inherit;
+    }
+    /* Hide the icon */
+    .my-page .ui-listview .ui-btn-icon-right:after {
+        display: none;
+    }
+    /* Make text wrap. */
+    .my-page .ui-listview h2,
+    .my-page .ui-listview p {
+        white-space: normal;
+        overflow: visible;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    /* Text position */
+    .my-page .ui-listview h2 {
+        font-size: 1.25em;
+        margin: 0;
+        padding: .125em 1em;
+        bottom: 50%;
+    }
+    .my-page .ui-listview p {
+        font-size: 1em;
+        margin: 0;
+        padding: 0 1.25em;
+        min-height: 50%;
+        bottom: 0;
+    }
+  
+    .ui-listview .ui-li-has-thumb h2 {
+        bottom: 35%;
+    }
+    .ui-listview .ui-li-has-thumb p {
+        min-height: 35%;
+    }
+    /* ui-li-aside has class .ui-li-desc as well so we have to override some things. */
+    
+.ui-listview .ocultar{
+display:initial;
+}
+
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:1.7%;
+}
+#relativo{
+display:block;
+margin: auto;
+}
+
+.my-page .letrah{
+font-size: 12pt; 
+}
+.my-page .letrap{
+font-size: 12pt; 
+}
+.my-page .letraa{
+font-size: 12pt;
+
+}
+.my-page .letraf{
+font-size: 12pt; 
+}
+
+
+
+.my-submenu .letra{
+font-size: 12pt; 
+}
+}
+@media ( min-width: 46em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:2.3%;
+}
+}
+
+@media ( min-width: 50em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:2.4%;
+}
+}
+
+@media ( min-width: 55em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:3%;
+}
+}
+
+@media ( min-width: 63em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:3.4%;
+}
+}
+@media ( min-width: 75em ) {
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:4%;
+}
+}

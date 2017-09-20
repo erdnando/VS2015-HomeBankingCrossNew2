@@ -1,0 +1,407 @@
+/*Tipo de letra Arial*/
+.my-page .ui-content h2,
+.my-page .ui-content p{
+ font-family: Arial,sans-serif;
+}
+
+
+
+/*Ajustes de SPLAHS*/
+
+.splash-logo .logo img {
+        /* Rellenamos el fondo */
+        min-height: 100%;
+        min-width: 100%;
+ 
+        /* Escalamiento proporcional */
+        width: 100%;
+        height: auto;
+ 
+        /* Posicionamiento */
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y:none;
+}
+}
+
+
+/*El te ma hace que el div main baje 10%
+    con esto reducimos padin */
+/* Color de parrafo*/
+.my-page .ui-content{
+padding-top: 0%!important;
+    padding-bottom:0%!important;
+}
+
+.my-page .ui-listview li .ui-btn p {
+    color: #c0c0c0;
+}
+/*Color de aside*/
+.my-page  .ui-li-aside {
+    color: white;
+}
+
+ /* Make all list items and anchors inherit the border-radius from the UL. */
+    .my-page .ui-listview li,
+    .my-page .ui-listview li .ui-btn,
+    .my-page .ui-listview .ui-li-thumb {
+        -webkit-border-radius: inherit;
+        border-radius: 15px;
+    }
+
+
+
+/* Hide the icon */                    /******************Deprecado**********/
+    .my-page .ui-listview .ui-btn-icon-right:after {
+        display: none;
+    }
+
+
+
+ /* Para que el aside no se mueva de la parte superior dercha */
+    .my-page .ui-listview p {
+        white-space: normal;
+        overflow: visible; 
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+
+
+
+
+
+   
+ /* ui-li-aside has class .ui-li-desc as well so we have to override some things.
+   Color, margen y border  de aside  */
+    .my-page .ui-listview .ui-li-aside {
+        padding: 0 0;
+        width: auto;
+        min-height: 0;
+        top: 0;
+        left: auto;
+        bottom: auto;
+        /* Custom styling. */
+        background: #064EA4;
+      
+        -webkit-border-top-right-radius: inherit;
+        border-top-right-radius: inherit;
+        -webkit-border-bottom-left-radius: inherit;
+        border-bottom-left-radius: inherit;
+        -webkit-border-bottom-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+
+/* If you want to add shadow, don't kill the focus style. 
+Aspecto enfocado del <li>  (sombra)
+*/
+    .my-page .ui-listview li {
+        -moz-box-shadow: 0px 0px 9px #111;
+        -webkit-box-shadow: 0px 0px 9px #111;
+        box-shadow: 0px 0px 9px #111;
+    }
+
+ /* Images mask the hover bg color so we give desktop users feedback by applying the focus style on hover as well. */
+    .my-page .ui-listview li > .ui-btn:hover {
+        -moz-box-shadow: 0px 0px 12px #33ccff;
+        -webkit-box-shadow: 0px 0px 12px #33ccff;
+        box-shadow: 0px 0px 12px #33ccff;
+    }
+
+
+
+    /* Animate focus and hover style, and resizing. 
+   Animacion de imagen al dar un resizen
+  */
+    .my-page .ui-listview li,
+    .my-page .ui-listview .ui-btn {
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+
+    .my-page .ui-listview li > .ui-btn {
+        -webkit-box-sizing: border-box; /* include padding and border in height so we can set it to 100% */
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+
+
+
+/***   Jquery's media para ajuste en diferentes resoluciones  ***/
+
+
+/*Para crear 1 columna*/
+@media screen and ( max-width: 340px ) {
+.my-page .ui-content {
+ padding: 0em; /* 9px */
+    padding-top: 0%!important;
+    padding-bottom:0%!important;
+}
+/*Porcentaje por columna*/
+    .my-page .ui-listview li {
+        float: left;
+        width: 24%; 
+        height: 26%; /*8.5em;  232p */
+        margin: 10px 4%;
+    }
+
+.ui-listview .ocultar{
+display:none;
+}
+.my-page .letraa{
+font-size: 7pt; 
+background-color:#111;
+}
+}
+
+
+
+@media screen and ( max-width: 490px ) and (min-width:341px){
+   .my-page .ui-content {
+        padding: 0em; /* 9px */
+       padding-top: 0%!important;
+    padding-bottom:0%!important;
+    }
+    .my-page .ui-listview .par {
+        float: left;
+        width: 25%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: 100px;/*8.5em;  232p */
+    }
+
+
+.ui-listview .ocultar{
+	display:block;
+}
+
+
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:5%;
+    margin-bottom: 5%;
+}
+
+
+.my-page .letraa{
+font-size: 9pt; 
+background-color:#111;
+}
+}
+
+@media screen and ( max-width: 550px ) and (min-width:491px){
+ .my-page .ui-content {
+        padding: 0em; /* 9px */
+       padding-top: 0%!important;
+    padding-bottom:0%!important;
+    }
+    .my-page .ui-listview .par {
+        float: left;
+        width: 25%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: 100px;/*8.5em;  232p */
+  /*      margin: 0 5%;*/
+    }
+
+
+.ui-listview .ocultar{
+display:none;
+   visibility: hidden;
+    width: 5%;
+    
+}
+
+
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:7%;
+    margin-top:5%;
+      margin-bottom: 5%;
+}
+
+
+.my-page .letraa{
+font-size: 9pt; 
+background-color:#111;
+}
+}
+
+@media screen and ( max-width: 720px ) and (min-width:551px){
+.my-page .ui-content {
+        padding: 0em; /* 9px */
+       padding-top: 0%!important;
+    padding-bottom:0%!important;
+    }
+    .my-page .ui-listview .par {
+        float: left;
+        width: 25%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: 100px;/*8.5em;  232p */
+        
+    }
+
+
+.ui-listview .ocultar{
+ display: none;
+}
+
+
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:10%;
+    margin-top:2%;
+      margin-bottom: 5%;
+}
+
+
+.my-page .letraa{
+font-size: 9pt; 
+background-color:#111;
+}
+}
+
+
+@media screen and ( max-width: 920px ) and (min-width:721px){
+    .my-page .ui-content {
+        padding: 0em; /* 9px */
+       padding-top: 0%!important;
+    padding-bottom:0%!important;
+    }
+    .my-page .ui-listview .par {
+        float: left;
+        width: 30%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: 25%;/*8.5em;  232p */
+        margin: 100px;
+    }
+
+
+.ui-listview .ocultar{
+ display: none;
+}
+
+
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:10%;
+    margin-top:3%;
+      margin-bottom: 5%;
+}
+
+
+.my-page .letraa{
+font-size: 9pt; 
+background-color:#111;
+}
+}
+
+
+
+@media screen and ( max-width: 1090px ) and (min-width:921px){
+ .my-page .ui-content {
+        padding: 0em; /* 9px */
+       padding-top: 0%!important;
+    padding-bottom:0%!important;
+    }
+    .my-page .ui-listview .par {
+        float: left;
+        width: 25%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: 100px;/*8.5em;  232p */
+        
+    }
+
+
+.ui-listview .ocultar{
+ visibility: visible;
+}
+
+
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:10%;
+    margin-top:1%;
+      margin-bottom: 1%;
+}
+
+
+.my-page .letraa{
+font-size: 9pt; 
+background-color:#111;
+}
+}
+
+
+
+
+
+@media screen and ( max-width: 1400px ) and (min-width:1091px){
+ .my-page .ui-content {
+        padding: 0em; /* 9px */
+       padding-top: 0%!important;
+    padding-bottom:0%!important;
+    }
+    .my-page .ui-listview .par {
+        float: left;
+        width: 25%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: 100px;/*8.5em;  232p */
+        
+    }
+
+
+.ui-listview .ocultar{
+ visibility: visible;
+}
+
+
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:10%;
+    margin-top:1%;
+      margin-bottom: 1%;
+}
+
+
+.my-page .letraa{
+font-size: 12pt; 
+background-color:#111;
+}
+}
+
+
+
+
+@media screen and (min-width:1401px){
+ .my-page .ui-content {
+        padding: 0em; /* 9px */
+       padding-top: 0%!important;
+    padding-bottom:0%!important;
+    }
+    .my-page .ui-listview .par {
+        float: left;
+        width: 25%; /* 33.3333% incl. 2 x 1.2% margin */
+        height: 100px;/*8.5em;  232p */
+        
+    }
+
+
+.ui-listview .ocultar{
+ visibility: visible;
+}
+
+
+.my-page .ui-listview li{   /*Margen a la derecha primero estaba de 5px*/
+margin-left:10%;
+    margin-top:1%;
+      margin-bottom: 2%;
+}
+
+
+.my-page .letraa{
+font-size: 12pt; 
+background-color:#111;
+}
+}
+
+
+
+.ui-listview>.ui-li-static {
+padding: .1em 0em;
+}

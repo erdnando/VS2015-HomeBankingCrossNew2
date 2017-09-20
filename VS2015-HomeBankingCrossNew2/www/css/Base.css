@@ -1,0 +1,74 @@
+﻿
+.formaTabla{
+    table-layout:fixed; 
+    width:100%;
+}
+
+.cuentasPro1{
+    width:80%;
+}
+
+.colTamanioBtn1
+{
+     width:48%;
+
+}
+
+.colTamanioBtnCen
+{
+     width:4%;
+
+}
+
+.btnFormaCuentas{
+    padding:5px !important;
+}
+
+/*comboCuentas*/
+#cmbCtaDepositoCuentas-button{
+        padding: 0px;
+        font-size: 12px;
+}
+
+
+
+
+/*style cabece alert*/
+
+.cabeceraFontAlert{
+    background-color: #095292;
+    color: white;
+
+}
+
+.posicionAlert{
+     width: 90%;
+    margin: 14% auto auto auto;
+}
+
+   
+
+/*fuentes defs combobox*/
+
+#cmbCuentasPropiasD-button,#cmbPagosSelect-button{
+    padding: 3px;
+    font-size: 12px;
+}
+   
+
+.formatoBtnAceptarGen{
+    border: transparent !important;
+    font-size: 16px !important;
+    height: 35px !important;
+    padding: 1px !important;
+    background-color: #2f5597 !important;
+}
+
+
+.formatoBtnCancelarGen{
+    border: transparent !important;
+    font-size: 16px !important;
+    height: 35px !important;
+    padding: 1px !important;
+    background-color: #848487 !important;
+}
