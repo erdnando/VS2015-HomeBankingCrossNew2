@@ -4,14 +4,14 @@ var urlws = "http://74.208.98.86/mx.com.homebanking.servicem2/mx.com.homebanking
 function onDeviceReady() {
 
     //release
-    localStorage.setItem("ModeloDispositivo", device.model);
-    localStorage.setItem("Plataforma", device.platform + ' ' + device.version);
-    window.plugins.uniqueDeviceID.get(success, fail);
-    
+    //localStorage.setItem("ModeloDispositivo", device.model);
+    //localStorage.setItem("Plataforma", device.platform + ' ' + device.version);
+    //window.plugins.uniqueDeviceID.get(success, fail);
+    //
     //debug
-    //localStorage.setItem("ModeloDispositivo", "SM-G935F");
-    //localStorage.setItem("Plataforma", "Android 7.0");
-    //success("50719c1d-475b-8185-3535-560875220038");
+    localStorage.setItem("ModeloDispositivo", "SM-G935F");
+    localStorage.setItem("Plataforma", "Android 7.0");
+    success("50719c1d-475b-8185-3535-560875220038");
     
 }
 
@@ -209,6 +209,9 @@ function realoadPage() {
 };
 
 
+function mytest(result){
+    alert(result);
+}
 
 function generaToken() {
 
@@ -224,7 +227,53 @@ function generaToken() {
         return;
     }
 
-    var TOKEN = urlws + 'GET_TOKEN_MOBILE/nocliente/' + noCliente;
+
+
+    //MyCordovaPlugin.getDate(mytest);
+
+
+
+    var secret = "B2374TNIQ3HKC446";// "SGSTDTZDZKASAWDAADWelcomeD";
+    // initialize OTP 
+    var generator = new AeroGear.Totp(secret);
+
+
+    // generate token 
+    generator.generateOTP(function (tokenObtenido) {
+        /* result is the otp */
+        console.log("tokenObtenido-->" + tokenObtenido);
+        var d = new Date();
+        //var n = d.getSeconds();
+        var TIME = d.getSeconds();
+        console.log("segundo.........." + TIME);
+        var TK = tokenObtenido;
+
+        if (TK == undefined) {
+            document.getElementById("imgReloadTk").innerHTML = "";
+
+            tokenObtenido = "-1";
+            $("#txtToken").val(""); return;
+        }
+        if (TK == "0") {
+            document.getElementById("imgReloadTk").innerHTML = "";
+            //$('.progress-message').html('');
+            alert("Cliente incorrecto, verifique");
+            $("#txtToken").val(""); return;
+        } else {
+            document.getElementById("generatoken").disabled = true;
+            localStorage.setItem("TOKEN", TK);
+            $('#txtToken').attr("value", TK);
+            document.getElementById("imgReloadTk").innerHTML = "";
+            progressbar(parseInt(TIME));
+        }
+
+    });
+
+
+
+    /*
+        var TOKEN = 'http://74.208.98.86/Stefanini/mx.com.homebanking.otp.api/Service1.svc/GET_TOKEN/nocliente/' + noCliente;
+    console.log(TOKEN);
     $.ajax(
             {
                 type: "GET",
@@ -234,16 +283,21 @@ function generaToken() {
                 cache: false,
                 contentType: "json",
                 success: function (tokenObtenido) {
+                    console.log("tokenObtenido-->" + tokenObtenido);
+                    //var TK_COMPLETO = tokenObtenido.split(",");
+                    //var tk_Obtenido = TK_COMPLETO[1].split(".");
 
-                    var TK_COMPLETO = tokenObtenido.split(",");
-                    var tk_Obtenido = TK_COMPLETO[1].split(".");
-
-                    var TIME = tk_Obtenido[0];
-                    var TK = tk_Obtenido[1];
+                    //var TIME = tk_Obtenido[0];
+                    //var TK = tk_Obtenido[1];
+                    var d = new Date();
+                    //var n = d.getSeconds();
+                    var TIME = d.getSeconds();
+                    console.log("segundo.........."+TIME);
+                    var TK = tokenObtenido;
                     
                     if (TK == undefined) {
                         document.getElementById("imgReloadTk").innerHTML = "";
-                        //$('.progress-message').html('');
+                        
                         tokenObtenido = "-1";
                         $("#txtToken").val(""); return;
                     }
@@ -259,8 +313,12 @@ function generaToken() {
                         document.getElementById("imgReloadTk").innerHTML = "";
                         progressbar(parseInt(TIME));
                     }
+
+
+
                 },
                 error: function (jqXHR, exception) {
+                    console.log("exception-->" + exception);
                     if (jqXHR.status === 0) {
                         document.getElementById('Indexes').style.display = 'none';
                         $.mobile.changePage('Error_Red.html');
@@ -271,29 +329,37 @@ function generaToken() {
                 },
                 async: false
             }
-        );
+        );*/
 
 }
 
+//----------otp---------------------------------------
 
 
-function progressbar(contador) {
 
-    var value = contador;
+//----------otp---------------------------------------
 
-    var timerr = (45 - Math.round(((45 / 100) * parseInt(contador))));
+function progressbar(value) {
 
-    if (parseInt(contador) == 0) { timerr = 45; }
+    //var value = contador;
+
+   // var timerr = (30 - Math.round(((30 / 100) * parseInt(contador))));
+
+    //if (parseInt(contador) == 0) { timerr = 30; }
     
-    var maxVal = 100;
+    var maxVal = 30;
     var interval;
-    var duration = 450;
+    var duration = 999;
 
     var IncrementProgressBar = function () {
 
+        if (value > maxVal) {
+            value = (value - maxVal);
+        }
         if (value == maxVal) {
             document.getElementById("generatoken").disabled = false;
             document.getElementById('progressbar').value = 0;
+            value = 0;
             $('.progress-time').html('');
             localStorage.setItem("TOKEN", "");
             $('.progress-message').html('Ha expirado el Token genere uno nuevo!');
@@ -301,13 +367,13 @@ function progressbar(contador) {
             return;
         }
         
-        $('.progress-message').html('Token Activo!');
+       // $('.progress-message').html('Token Activo!');
 
         document.getElementById('progressbar').value = value;
 
-        if (value == 1 || value == 3 || value == 5 || value == 7 || value == 9 || value == 11 || value == 14 || value == 17 || value == 20 || value == 23 || value == 26 || value == 29 || value == 32 || value == 35 || value == 38 || value == 41 || value == 44 || value == 47 || value == 50 || value == 53 || value == 56 || value == 59 || value == 62 || value == 65 || value == 68 || value == 71 || value == 74 || value == 77 || value == 80 || value == 83 || value == 86 || value == 89 || value == 92 || value == 95 || value == 97) {
+        /*if (value == 1 || value == 3 || value == 5 || value == 7 || value == 9 || value == 11 || value == 14 || value == 17 || value == 20 || value == 23 || value == 26 || value == 29 || value == 32 || value == 35 || value == 38 || value == 41 || value == 44 || value == 47 || value == 50 || value == 53 || value == 56 || value == 59 || value == 62 || value == 65 || value == 68 || value == 71 || value == 74 || value == 77 || value == 80 || value == 83 || value == 86 || value == 89 || value == 92 || value == 95 || value == 97) {
             $('.progress-time').html('Queda ' + (timerr--) + ' Seg.');
-        }
+        }*/
 
         value = value + 1;
     }
@@ -3939,9 +4005,6 @@ function loadCbo() {
 
 }
 
-
-
-
 function loadCboGenerales(idDivName, idCombo, nameMetodo) {
 
     var cliente = localStorage.getItem("CLIENTE");
@@ -4046,8 +4109,6 @@ function loadCboTerceros(idDivName, idCombo, nameMetodo) {
                         }
         );
 }
-
-
 
 function loadCboOtros(idDivName, idCombo, nameMetodo) {
 
@@ -4347,7 +4408,6 @@ function cboNombreSelectedValue(obj) {
 
 //inicia cuentas propias
 
-
 //Transpasos entre cuentas propias
 function iniciaCuentasPropias() {
 
@@ -4362,16 +4422,12 @@ function soloNumeros(e) {
     
 }
 
-
 function validar(frm) {
   if(frm.txt.value.length!=9) {
     alert('error');
     frm.txt.focus();
     }
 }
-
-
-
 
 var bndAceptarEnvio = '0';
 var bndAceptarEnvio3o = '0';
@@ -4528,9 +4584,6 @@ function CancelarCuentasTerceros() {
     document.getElementById("formaTablaUnoTerceros").setAttribute('style', '');//display:block;
 }
 
-
-
-
 function cleanTransferencias() {
 
     if (document.getElementById("formaTablaSegunda")) {
@@ -4559,7 +4612,7 @@ function transferenciaCtasPropias(event) {
     var descripcionCorta = document.getElementById('txtDescriCorta').value;
     var referencia= document.getElementById('txtReferencia').value;
 
-    var GET_MOVIMIENTOS = urlws + 'HB_Traspaso/user/TOP/cve/1234567/nocliente/' + localStorage.getItem("CLIENTE") + '/producto/123/ctaOrigen/' + origen + '/ctaDestino/' + destino + '/monto/' + monto + '/cargo/0/concepto/' + descripcionCorta + '/referencia/' + referencia;
+    var GET_MOVIMIENTOS = urlws + 'HB_Traspaso/user/TOP/cve/1234567/nocliente/' + localStorage.getItem("CLIENTE") + '/producto/123/ctaOrigen/' + origen + '/ctaDestino/' + destino + '/monto/' + monto + '/cargo/0/concepto/' + descripcionCorta + '/referencia/1122334';
     console.log("input "+GET_MOVIMIENTOS);
     //alert(GET_MOVIMIENTOS);
     $.ajax(
@@ -5677,8 +5730,6 @@ function enabletablaTransfOtros() {//
 
     }
 
-
-
     function loadCredito(evt) {
         var ID_SALDO = evt.value;
 
@@ -5705,9 +5756,7 @@ function enabletablaTransfOtros() {//
         //getDetalleCredito(ID_SALDO);
 
     }
-
-    
-
+   
     function getDetalleCredito(ID_SALDO) {
         var GET_MOVIMIENTOS = urlws + 'HB_Detalle_Credito/idSaldo/' + ID_SALDO;
 
@@ -5750,7 +5799,6 @@ function enabletablaTransfOtros() {//
     }
                );
     }
-
 
     function iniciaPagoCreditos() {
         $("#cboCuentasPagoCreditos").html('');

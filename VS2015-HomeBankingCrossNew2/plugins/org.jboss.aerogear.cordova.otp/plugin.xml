@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="org.jboss.aerogear.cordova.otp"
+        version="0.0.3">
+
+  <name>AeroGear OTP</name>
+  <description>Generates a one time password</description>
+  <license>MIT</license>
+  <keywords>cordova,aerogear,time,password,otp</keywords>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+    <engine name="cordova-android" version=">=3.7.2" />
+  </engines>
+
+  <dependency id="com.phonegap.plugins.barcodescanner"/>
+
+  <js-module src="www/aerogear-opt.js" name="AeroGear.Totp">
+    <clobbers target="cordova.plugins.totp"/>
+  </js-module>
+
+  <!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="AeroGearPlugin">
+        <param name="ios-package" value="CDVAeroGearPlugin"/>
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/CDVAeroGearPlugin.h" />
+    <source-file src="src/ios/CDVAeroGearPlugin.m"/>
+
+    <header-file src="src/ios/AGOtp.h"/>
+    <header-file src="src/ios/AGTotp.h"/>
+    <header-file src="src/ios/AGBase32.h"/>
+    <framework src="Foundation.framework"/>
+    <source-file src="src/ios/libaerogear-otp.a" framework="true"/>
+  </platform>
+
+  <!-- android -->
+  <platform name="android">
+
+    <source-file src="src/android/org/jboss/aerogear/cordova/android/AeroGearPlugin.java"
+                 target-dir="src/org/jboss/aerogear/cordova/android"/>
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="AeroGearPlugin">
+        <param name="android-package" value="org.jboss.aerogear.cordova.android.AeroGearPlugin" />
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/aerogear-otp-java-1.0.0.jar" target-dir="libs"/>
+  </platform>
+
+  <platform name="wp8">
+    <config-file target="config.xml" parent="/*">
+      <feature name="AeroGearPlugin">
+        <param name="wp-package" value="OtpPlugin"/>
+      </feature>
+    </config-file>
+    <source-file src="src/wp8/OtpPlugin.cs" />
+    <source-file src="src/wp8/Repository.cs" />
+
+    <source-file src="src/wp8/otp-lib/Clock.cs" />
+    <source-file src="src/wp8/otp-lib/Totp.cs" />
+    <source-file src="src/wp8/otp-lib/Base32Encoding.cs" />
+  </platform>
+</plugin>

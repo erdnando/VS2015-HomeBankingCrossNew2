@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" media="all and (orientation:portrait)" href="css/style_entradaportrait.css">
     <link rel="stylesheet" media="all and (orientation:landscape)" href="css/style_entradalandscape.css">
-    
+
     <!--aca-->
 
 
@@ -30,147 +30,147 @@
 </head>
 <body>
     <div data-url="demo-page" data-role="page" data-theme="b" class="" style="height:100%;overflow:hidden;">
-    
-            <!-- Header -->
 
-            <div data-role="header" style="background-color:#2F5597">
-                <a onclick="inicioPrimeraVez()" data-transition="flow" class="ui-btn-right ui-nodisc-icon" data-shadow="false" data-iconshadow="false" data-icon="carat-l" data-iconpos="notext" data-rel="back" data-ajax="false">Back</a>
-                <span style="height:20px;text-align:center;text-shadow:none;font-size:18px;">Token</span>
-            </div>
-            <!---End Header-->
+        <!-- Header -->
 
-            <script type="text/javascript">
+        <div data-role="header" style="background-color:#2F5597">
+            <a onclick="inicioPrimeraVez()" data-transition="flow" class="ui-btn-right ui-nodisc-icon" data-shadow="false" data-iconshadow="false" data-icon="carat-l" data-iconpos="notext" data-rel="back" data-ajax="false">Back</a>
+            <span style="height:20px;text-align:center;text-shadow:none;font-size:18px;">Token</span>
+        </div>
+        <!---End Header-->
+
+        <script type="text/javascript">
                 $(document).ready(function () {
                     document.getElementById('txtCliente').value = localStorage.getItem("CLIENTE");
                 });
-            </script>
+        </script>
 
 
-            <!--Main Principal--->
-            <div role="main" class="ui-content" style="height:73%; overflow-y: hidden; overflow-x: hidden; background-image: url('images/fondo-3.jpg');">
-                <table border="0" style="width:100%;height:75%; text-align: center;" cellspacing='0' cellpadding='0'>
-                    <tr>
-                        <td colspan='4'>
-                            <img src="images/Logoblanco.png" alt="Placeholder image" width="200" class="img-responsive">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan='4' style="height:10px">
-                            <!--<span style="height:20px;text-shadow:none;font-size:19px; ">Banca m&oacute;vil</span>-->
-                        </td>
-                    </tr>
+        <!--Main Principal--->
+        <div role="main" class="ui-content" style="height:73%; overflow-y: hidden; overflow-x: hidden; background-image: url('images/fondo-3.jpg');">
+            <table border="0" style="width:100%;height:75%; text-align: center;" cellspacing='0' cellpadding='0'>
+                <tr>
+                    <td colspan='4'>
+                        <img src="images/Logoblanco.png" alt="Placeholder image" width="200" class="img-responsive">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='4' style="height:10px">
+                        <!--<span style="height:20px;text-shadow:none;font-size:19px; ">Banca m&oacute;vil</span>-->
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td colspan='4' style="height:20px"></td>
-                    </tr>
+                <tr>
+                    <td colspan='4' style="height:20px"></td>
+                </tr>
 
-                    <tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'>
-                            <input type="text" id="txtCliente" readonly  style="background:white; -webkit-box-shadow: 1px 1px 5px #000000;box-shadow: 1px 1px 5px #000000;border: 0px;  text-align:center; font-size:18px;" data-mini="true" placeholder="Usuario" data-theme="b">
+                <tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'>
+                        <input type="text" id="txtCliente" readonly style="background:white; -webkit-box-shadow: 1px 1px 5px #000000;box-shadow: 1px 1px 5px #000000;border: 0px;  text-align:center; font-size:18px;" data-mini="true" placeholder="Usuario" data-theme="b">
 
-                        </td>
-                        <td style='width:5%;'></td>
-                    </tr>
-                    <tr>
-                        <td colspan='4'></td>
-                    </tr>
-                    <tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'>
-                            <!--<button id="generatoken" onclick="generaToken()" data-mini="true" data-theme="b" style="font-size:18px;height:38px;padding: 0px 74px" class="btn button button:hover">Generar</button>-->
-                            <button id="generatoken" onclick="generaToken()" data-mini="true" data-theme="b" style="border:transparent;font-size:18px;height:38px;padding: 0px 74px;margin-top: -2px;" class="btn button button:hover">
-                                <div style="margin-right: -35px;">Generar clave</div>
-                            </button>
-                           
-
-                        </td>
-                        <td style='width:5%;'></td>
-                    </tr>
-                    <tr>
-                        <td colspan='4'>
-                            <div style="margin-right: -40px;color:white">Clave generada</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'>
-                            <input type="text" id="txtToken" readonly style="background:white; -webkit-box-shadow: 1px 1px 5px #000000;box-shadow: 1px 1px 5px #000000;border: 0px;  text-align:center; font-size:18px;"  data-mini="true" placeholder="" data-theme="b">
-                        </td>
-                        <td style='width:5%;'></td>
-                    </tr>
-
-                    <!--barra-->
-                    <tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'>
-                            <progress id="progressbar" style="width:100%;" low="70" high="99" optimum="100" min="0" value="0" max="100"></progress>
-                        </td>
-                        <td style='width:5%;'></td>
-                    </tr>
-
-                    <!--<tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'>
-                            <span class="progress-message"></span>
-                        </td>
-                        <td style='width:5%;'></td>
-                    </tr>
-                    <tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'>
-                            <span class="progress-time"></span>
-                         </td>
-                        <td style='width:5%;'></td>
-                    </tr>-->
-                    <tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'>
-                            <div id="imgReloadTk"></div>
-                        </td>
-                        <td style='width:5%;'></td>
-                    </tr>
-
-                    <tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'>
-
-                            <table style=" width:100%">
-                                <tr>
-                                    <td>
-                                        <button id="btnToken" onclick="inicioPrimeraVez()"  data-mini="true" data-icon="lock" data-theme="b" style="border:transparent;font-size:18px;height:75px;padding: 0px 74px 0px 39px;width: 99%;margin-right: 4px;" class=" ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini ui-nodisc-icon btn button button:hover">
-                                            <img src="images/Token.png" width="20" id="dagger" class="img-responsive" style="margin-top: 9px;margin-right: -35px;" /><br>
-                                            <div style="margin-right: -40px;">Acceso</div>
-                                        </button>
-                                    </td>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                    <td>
-                                        <button id="btnSalir"  onclick="exitFromApp()" data-mini="true" data-icon="power" data-theme="b" style="border:transparent;font-size:18px;height:75px;padding: 0px 74px 0px 39px;width: 99%;margin-right: 4px;" class= "ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini ui-nodisc-icon btn button button:hover">
-                                            <img src="images/Salir.png" width="20" id="daggerSal" class="img-responsive" style="margin-top: 9px;margin-right: -35px;" /><br>
-                                            <div style="margin-right: -40px;">Salir</div>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </td>
-                        <td style='width:5%;'></td>
-                    </tr>
-
-                    <tr>
-                        <td style='width:5%;'></td>
-                        <td style='width:90%;' colspan='2'></td>
-                        <td style='width:5%;'></td>
-                    </tr>
-                </table>
+                    </td>
+                    <td style='width:5%;'></td>
+                </tr>
+                <tr>
+                    <td colspan='4'></td>
+                </tr>
+                <tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'>
+                        <!--<button id="generatoken" onclick="generaToken()" data-mini="true" data-theme="b" style="font-size:18px;height:38px;padding: 0px 74px" class="btn button button:hover">Generar</button>-->
+                        <button id="generatoken" onclick="generaToken()" data-mini="true" data-theme="b" style="border:transparent;font-size:18px;height:38px;padding: 0px 74px;margin-top: -2px;" class="btn button button:hover">
+                            <div style="margin-right: -35px;">Generar clave</div>
+                        </button>
 
 
-            </div>
+                    </td>
+                    <td style='width:5%;'></td>
+                </tr>
+                <tr>
+                    <td colspan='4'>
+                        <div style="margin-right: -40px;color:white">Clave generada</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'>
+                        <input type="text" id="txtToken" readonly style="background:white; -webkit-box-shadow: 1px 1px 5px #000000;box-shadow: 1px 1px 5px #000000;border: 0px;  text-align:center; font-size:18px;" data-mini="true" placeholder="" data-theme="b">
+                    </td>
+                    <td style='width:5%;'></td>
+                </tr>
+
+                <!--barra-->
+                <tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'>
+                        <progress id="progressbar" style="width:100%;" low="70" high="99" optimum="30" min="0" value="0" max="30"></progress>
+                    </td>
+                    <td style='width:5%;'></td>
+                </tr>
+
+                <!--<tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'>
+                        <span class="progress-message"></span>
+                    </td>
+                    <td style='width:5%;'></td>
+                </tr>
+                <tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'>
+                        <span class="progress-time"></span>
+                     </td>
+                    <td style='width:5%;'></td>
+                </tr>-->
+                <tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'>
+                        <div id="imgReloadTk"></div>
+                    </td>
+                    <td style='width:5%;'></td>
+                </tr>
+
+                <tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'>
+
+                        <table style=" width:100%">
+                            <tr>
+                                <td>
+                                    <button id="btnToken" onclick="inicioPrimeraVez()" data-mini="true" data-icon="lock" data-theme="b" style="border:transparent;font-size:18px;height:75px;padding: 0px 74px 0px 39px;width: 99%;margin-right: 4px;" class=" ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini ui-nodisc-icon btn button button:hover">
+                                        <img src="images/Token.png" width="20" id="dagger" class="img-responsive" style="margin-top: 9px;margin-right: -35px;" /><br>
+                                        <div style="margin-right: -40px;">Acceso</div>
+                                    </button>
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <button id="btnSalir" onclick="exitFromApp()" data-mini="true" data-icon="power" data-theme="b" style="border:transparent;font-size:18px;height:75px;padding: 0px 74px 0px 39px;width: 99%;margin-right: 4px;" class="ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini ui-nodisc-icon btn button button:hover">
+                                        <img src="images/Salir.png" width="20" id="daggerSal" class="img-responsive" style="margin-top: 9px;margin-right: -35px;" /><br>
+                                        <div style="margin-right: -40px;">Salir</div>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td style='width:5%;'></td>
+                </tr>
+
+                <tr>
+                    <td style='width:5%;'></td>
+                    <td style='width:90%;' colspan='2'></td>
+                    <td style='width:5%;'></td>
+                </tr>
+            </table>
+
+
+        </div>
 
         <div id="Indexes" style="display: none; position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; background-color: black; z-index:1; -moz-opacity: 0.9; opacity:.90; filter: alpha(opacity=90);"></div>
-        </div>
+    </div>
 
     <script src="cordova.js"></script>
     <script src="scripts/platformOverrides.js"></script>

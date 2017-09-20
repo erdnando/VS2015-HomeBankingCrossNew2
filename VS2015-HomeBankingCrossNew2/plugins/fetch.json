@@ -22,5 +22,29 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "org.jboss.aerogear.cordova.otp": {
+        "source": {
+            "type": "registry",
+            "id": "aerogear-cordova-otp"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "phonegap-plugin-barcodescanner": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-barcodescanner"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-compat"
+        },
+        "is_top_level": false,
+        "variables": {}
     }
 }
