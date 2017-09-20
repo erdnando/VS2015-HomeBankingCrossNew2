@@ -168,6 +168,8 @@ function validarNumeroTel() {
                         localStorage.setItem("NumTelefonico", document.getElementById("numTelefono").value);
                         localStorage.setItem("CLIENTE", DATOS[1]);
                         localStorage.setItem("NOMBRECLIENTE", DATOS[2]);
+                        //localStorage.setItem("LLAVE", DATOS[3]);
+
                         document.getElementById('LoadingImageTEL').style.display = 'none';
                         $.mobile.changePage('Hompage.html'); return;
                         return;
@@ -228,19 +230,19 @@ function generaToken() {
     }
 
 
-
+    
     //MyCordovaPlugin.getDate(mytest);
 
 
-
-    var secret = "B2374TNIQ3HKC446";// "SGSTDTZDZKASAWDAADWelcomeD";
+    //localStorage.setItem("LLAVE", DATOS[3]);
+    var secret ="B2374TNIQ3HKC446";// "SGSTDTZDZKASAWDAADWelcomeD";
     // initialize OTP 
     var generator = new AeroGear.Totp(secret);
 
 
     // generate token 
     generator.generateOTP(function (tokenObtenido) {
-        /* result is the otp */
+      
         console.log("tokenObtenido-->" + tokenObtenido);
         var d = new Date();
         //var n = d.getSeconds();
@@ -268,8 +270,8 @@ function generaToken() {
         }
 
     });
-
-
+    
+    
 
     /*
         var TOKEN = 'http://74.208.98.86/Stefanini/mx.com.homebanking.otp.api/Service1.svc/GET_TOKEN/nocliente/' + noCliente;

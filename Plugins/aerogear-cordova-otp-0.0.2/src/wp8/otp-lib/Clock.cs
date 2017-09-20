@@ -25,8 +25,12 @@ namespace AeroGear.OTP
         {
             get
             {
-                long currentTimeSeconds = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond / 1000;
-                return currentTimeSeconds / interval;
+				 DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                long equivalente = (long)(DateTime.UtcNow - Jan1st1970).TotalMilliseconds / 1000;
+                return equivalente / interval;
+				
+                //long currentTimeSeconds = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond / 1000;
+                //return currentTimeSeconds / interval;
             }
         }
     }

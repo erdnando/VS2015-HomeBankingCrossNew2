@@ -23,10 +23,18 @@
         "is_top_level": true,
         "variables": {}
     },
-    "org.jboss.aerogear.cordova.otp": {
+    "cordova-plugin-compat": {
         "source": {
             "type": "registry",
-            "id": "aerogear-cordova-otp"
+            "id": "cordova-plugin-compat"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "org.jboss.aerogear.cordova.otp": {
+        "source": {
+            "type": "local",
+            "path": "C:\\Proyectos\\VS2015-HomeBankingCrossNew2\\VS2015-HomeBankingCrossNew2\\Plugins\\aerogear-cordova-otp-0.0.2"
         },
         "is_top_level": true,
         "variables": {}
@@ -35,14 +43,6 @@
         "source": {
             "type": "registry",
             "id": "phonegap-plugin-barcodescanner"
-        },
-        "is_top_level": false,
-        "variables": {}
-    },
-    "cordova-plugin-compat": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-compat"
         },
         "is_top_level": false,
         "variables": {}

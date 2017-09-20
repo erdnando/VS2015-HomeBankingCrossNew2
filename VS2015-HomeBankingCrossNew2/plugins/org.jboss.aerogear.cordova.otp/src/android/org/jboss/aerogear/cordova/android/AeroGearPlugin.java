@@ -57,12 +57,7 @@ public class AeroGearPlugin extends CordovaPlugin {
         final String secret = data.getString(0);
         cordova.getThreadPool().execute(new Runnable() {
           public void run() {
-            try {
-              callbackContext.success(generateOTP(secret));
-            } catch (Exception e) {
-              Log.e(TAG, "could not create otp", e);
-              callbackContext.error("Error creating the OTP, did you scan the correct qr code?");
-            }
+            callbackContext.success(generateOTP(secret));
           }
         });
         return true;
