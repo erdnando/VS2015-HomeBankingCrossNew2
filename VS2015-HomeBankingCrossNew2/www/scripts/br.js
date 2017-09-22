@@ -4,14 +4,14 @@ var urlws = "http://74.208.98.86/mx.com.homebanking.servicem2/mx.com.homebanking
 function onDeviceReady() {
 
     //release
-    //localStorage.setItem("ModeloDispositivo", device.model);
-    //localStorage.setItem("Plataforma", device.platform + ' ' + device.version);
-    //window.plugins.uniqueDeviceID.get(success, fail);
+    localStorage.setItem("ModeloDispositivo", device.model);
+    localStorage.setItem("Plataforma", device.platform + ' ' + device.version);
+    window.plugins.uniqueDeviceID.get(success, fail);
     //
     //debug
-    localStorage.setItem("ModeloDispositivo", "SM-G935F");
-    localStorage.setItem("Plataforma", "Android 7.0");
-    success("50719c1d-475b-8185-3535-560875220038");
+    //localStorage.setItem("ModeloDispositivo", "SM-G935F");
+    //localStorage.setItem("Plataforma", "Android 7.0");
+    //success("50719c1d-475b-8185-3535-560875220038");
     
 }
 
@@ -107,11 +107,11 @@ function inicioPrimeraVez() {
                             console.log("cliente---->"+DATOS[1]);
                             localStorage.setItem("CLIENTE", DATOS[1]);
                             localStorage.setItem("NOMBRECLIENTE", DATOS[2]);
-
+                            localStorage.setItem("LLAVE", DATOS[3]);
                             //initialize db
                             //alert("initialize db");
                             //alert(localStorage.getItem("UUID"));
-                            dbActions(DATOS[1],DATOS[2],localStorage.getItem("UUID"));
+                            dbActions(DATOS[1],DATOS[2],localStorage.getItem("UUID"),DATOS[3]);
 
                             $.mobile.changePage('Hompage.html');
                         }
@@ -163,7 +163,7 @@ function inicioPrimeraVez() {
 }
 
 
-function dbActions(noCliente, nombreCliente, uuid) {
+function dbActions(noCliente, nombreCliente, uuid,llave) {
    // alert("inside dbActions");
                           //-------------------------------------------------------------------------------------------------
                             var myDB;
@@ -238,6 +238,20 @@ function dbActions(noCliente, nombreCliente, uuid) {
                                 myDB.transaction(function (transaction) {
                                     var executeQuery = "INSERT INTO parametros (parametro, valor) VALUES (?,?)";
                                     transaction.executeSql(executeQuery, [parametro3, valor3]
+                                    , function (tx, result) {
+                                        console.log('Inserted');
+                                    },
+                                    function (error) {
+                                        alert('Error occurred');
+                                    });
+                                });
+
+
+                                var parametro4 = "LLAVE";
+                                var valor4 = uuid;
+                                myDB.transaction(function (transaction) {
+                                    var executeQuery = "INSERT INTO parametros (parametro, valor) VALUES (?,?)";
+                                    transaction.executeSql(executeQuery, [parametro4, valor4]
                                     , function (tx, result) {
                                         console.log('Inserted');
                                     },
@@ -343,7 +357,7 @@ function validarNumeroTel() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImageTEL').style.display = 'none';
-                        alert("error2");
+                        //alert("error2");
                         $.mobile.changePage('Error_Red.html'); return;
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImageTEL').style.display = 'none';
@@ -362,7 +376,7 @@ function callPhone() {
 }
 
 function realoadPage() {
-    alert("realoadPage");
+    //alert("realoadPage");
     document.getElementById('btnReload').src = "images/refresh2.gif";
     //inicioPrimeraVez();
 
@@ -373,7 +387,7 @@ function realoadPage() {
         inicioPrimeraVez();
     } else {
         //alert("no es 1er inicio");
-        alert("error3");
+        //alert("error3");
         $.mobile.changePage('Error_Red.html');
     }
 };
@@ -392,7 +406,7 @@ function generaToken() {
     //$('.progress-message').html('Generando Token espere por favor!');
 
     if (document.getElementById("txtCliente").value == "") {
-        alert("Ingrese un cliente");
+        //alert("Ingrese un cliente");
         document.getElementById('Indexes').style.display = 'none';
         return;
     }
@@ -403,7 +417,9 @@ function generaToken() {
 
 
     //localStorage.setItem("LLAVE", DATOS[3]);
-    var secret ="B2374TNIQ3HKC446";// "SGSTDTZDZKASAWDAADWelcomeD";
+    var secret = localStorage.getItem("LLAVE");
+    //alert(secret);
+    //var secret = "SGSTDTZDZKASAWDAADWelcomeD";
     // initialize OTP 
     var generator = new AeroGear.Totp(secret);
 
@@ -666,7 +682,7 @@ function menuPadres() {
                 },
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
-                        alert("error4");
+                        //alert("error4");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); $.mobile.changePage('BancaMovil.html'); return;
@@ -696,7 +712,7 @@ function menuHijos() {
                 },
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
-                        alert("error5");
+                        //alert("error5");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); $.mobile.changePage('BancaMovil.html'); return;
@@ -724,7 +740,7 @@ function menuPaginas() {
                 },
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
-                        alert("error6");
+                        //alert("error6");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); $.mobile.changePage('BancaMovil.html'); return;
@@ -1078,7 +1094,7 @@ function getPreguntas1() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
-                        alert("error7");
+                        //alert("error7");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -1152,7 +1168,7 @@ function getPreguntas2() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
-                        alert("error8");
+                        //alert("error8");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -1204,7 +1220,7 @@ function validarDatosCliente() {
                 },
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
-                        alert("error9");
+                        //alert("error9");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); return;
@@ -1463,7 +1479,7 @@ function validarCuentasTerceros() {
                     },
                     error: function (jqXHR, exception) {
                         if (jqXHR.status === 0) {
-                            alert("error10");
+                            //alert("error10");
                             $.mobile.changePage('Error_Red.html');
                         } else if (exception === 'timeout') {
                             alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); return;
@@ -1568,7 +1584,7 @@ function validarCuentasSPEI() {
                     },
                     error: function (jqXHR, exception) {
                         if (jqXHR.status === 0) {
-                            alert("error11");
+                            //alert("error11");
                             $.mobile.changePage('Error_Red.html');
                         } else if (exception === 'timeout') {
                             alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); return;
@@ -2442,7 +2458,7 @@ function getEntreCuentasPropias() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
-                        alert("error12");
+                        //alert("error12");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -2516,7 +2532,7 @@ function changeEntreCuentasPropias() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
-                        alert("error13");
+                        //alert("error13");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -2587,7 +2603,7 @@ function getCuentasTerceros_Cuenta() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
-                        alert("error14");
+                        //alert("error14");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -2657,7 +2673,7 @@ function getCuentasTerceros_Nombre() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
-                        alert("error15");
+                        //alert("error15");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -2710,7 +2726,7 @@ function obtenerNombreCuenta() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
-                        alert("error16");
+                        //alert("error16");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
