@@ -21,18 +21,47 @@ function success(uuid) {
     //alert(strUiid);;;;;;;
     localStorage.setItem("UUID", strUiid);
     //return;
-    var condition = navigator.onLine ? "ONLINE" : "OFFLINE";
+    //var condition = navigator.onLine ? "ONLINE" : "OFFLINE";
     //condition = 'no';
-    if (condition == "ONLINE") {
-        //alert("1er inicio");
-        
+    //alert(navigator.connection.type);
+    //if (condition == "ONLINE") {
+        //alert("estatus..." + navigator.onLine);
         inicioPrimeraVez();
-    } else {
-        //alert("no es 1er inicio");
-        $.mobile.changePage('Error_Red.html');
-    }
+    //} else {
+    //    //alert("no es 1er inicio");
+    //    alert("yaEstabaRegistrado");
+    //    if (yaEstabaRegistrado()) {
+    //        $.mobile.changePage('Hompage.html');
+    //    } else {
+    //       $.mobile.changePage('Error_Red.html');
+    //    }
+       
+    //}
     
 };
+
+function yaEstabaRegistrado() {
+    var myDB;
+    var cte,nombre,uuid;
+ 
+    myDB = window.sqlitePlugin.openDatabase({ name: "mySQLite.db", location: 'default' });
+    myDB.transaction(function (transaction) {
+        transaction.executeSql('SELECT * FROM parametros', [], function (tx, results) {
+            var len = results.rows.length, i;
+            
+            if (len > 0) {
+                cte=results.rows.item(0).valor;
+                nombre=results.rows.item(1).valor;
+                uuid = results.rows.item(2).valor;
+                 
+            } else {
+                alert("no encontre nada...");
+             }
+        }, null);
+    });
+
+   
+}
 
 function fail(error) {
     alert(uuid);
@@ -78,15 +107,51 @@ function inicioPrimeraVez() {
                             console.log("cliente---->"+DATOS[1]);
                             localStorage.setItem("CLIENTE", DATOS[1]);
                             localStorage.setItem("NOMBRECLIENTE", DATOS[2]);
+
+                            //initialize db
+                            //alert("initialize db");
+                            //alert(localStorage.getItem("UUID"));
+                            dbActions(DATOS[1],DATOS[2],localStorage.getItem("UUID"));
+
                             $.mobile.changePage('Hompage.html');
                         }
                         if (objRegreso.slice(0, 1) == "0") {
+
                             $.mobile.changePage('PrimerInicio.html');
                         }
                     },
                     error: function (jqXHR, exception) {
                         if (jqXHR.status === 0) {
-                            $.mobile.changePage('Error_Red.html');
+
+                            var myDB;
+                            //var cte, nombre, uuid;
+
+                            myDB = window.sqlitePlugin.openDatabase({ name: "mySQLite.db", location: 'default' });
+                            myDB.transaction(function (transaction) {
+                                transaction.executeSql('SELECT * FROM parametros', [], function (tx, results) {
+                                    var len = results.rows.length, i;
+
+                                    if (len > 0) {
+                                        //cte = results.rows.item(0).valor;
+                                        //nombre = results.rows.item(1).valor;
+                                        //uuid = results.rows.item(2).valor;
+                                        $.mobile.changePage('Hompage.html');
+                                    } else {
+                                        $.mobile.changePage('Error_Red.html');
+                                    }
+                                }, null);
+                            });
+
+
+
+                                //if (yaEstabaRegistrado()) {
+                                //    $.mobile.changePage('Hompage.html');
+                                //} else {
+                                 //  $.mobile.changePage('Error_Red.html');
+                               // }
+
+                            //alert("error1");
+                            //$.mobile.changePage('Error_Red.html');
                         } else if (exception === 'timeout') {
                             alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde');
                             $.mobile.changePage('PrimerInicio.html'); return;
@@ -95,6 +160,106 @@ function inicioPrimeraVez() {
                     async: true
                 }
             );
+}
+
+
+function dbActions(noCliente, nombreCliente, uuid) {
+   // alert("inside dbActions");
+                          //-------------------------------------------------------------------------------------------------
+                            var myDB;
+                            //create db
+                            myDB = window.sqlitePlugin.openDatabase({ name: "mySQLite.db", location: 'default' });
+
+                            //--------drop table if exists------------------------
+                            myDB.transaction(function (transaction) {
+                                var executeQuery = "DROP TABLE IF EXISTS parametros";
+                                transaction.executeSql(executeQuery, [],
+                                function (tx, result) { console.log('Table deleted successfully.'); },
+                                function (error) { alert('Error occurred while droping the table.'); }
+                                );
+                            });
+
+                            //crea table--------------------------------------
+                            myDB.transaction(function (transaction) {
+                                transaction.executeSql('CREATE TABLE IF NOT EXISTS parametros (id integer primary key, parametro text, valor text)', [],
+                                function (tx, result) {
+                                    //alert("Table created successfully");
+                                    console.log("Table created successfully");
+                                     
+                                    //-----------------------------------------------
+                                },
+                                function (error) {
+                                    alert("Error occurred while creating the table.");
+                                });
+                            });
+                            //----------------------------------------------------------------------------------------------------
+                            var parametros = 0;
+                            myDB.transaction(function (transaction) {
+                                transaction.executeSql('SELECT * FROM parametros', [], function (tx, results) {
+                                    parametros = results.rows.length;
+
+                                    
+                                }, null);
+                            });
+
+                              // alert(parametros);
+                            if (parametros<=0){
+                                //------------insert--cliente-------------------------
+                                var parametro = "CLIENTE";
+                                var valor = noCliente;
+                                myDB.transaction(function (transaction) {
+                                    var executeQuery = "INSERT INTO parametros (parametro, valor) VALUES (?,?)";
+                                    transaction.executeSql(executeQuery, [parametro, valor]
+                                    , function (tx, result) {
+                                        console.log('Inserted');
+                                    },
+                                    function (error) {
+                                        alert('Error occurred');
+                                    });
+                                });
+
+
+                                var parametro2 = "NOMBRECLIENTE";
+                                var valor2 = nombreCliente;
+                                myDB.transaction(function (transaction) {
+                                    var executeQuery = "INSERT INTO parametros (parametro, valor) VALUES (?,?)";
+                                    transaction.executeSql(executeQuery, [parametro2, valor2]
+                                    , function (tx, result) {
+                                        console.log('Inserted');
+                                    },
+                                    function (error) {
+                                        alert('Error occurred');
+                                    });
+                                });
+
+
+                                var parametro3 = "UUID";
+                                var valor3 = uuid;
+                                myDB.transaction(function (transaction) {
+                                    var executeQuery = "INSERT INTO parametros (parametro, valor) VALUES (?,?)";
+                                    transaction.executeSql(executeQuery, [parametro3, valor3]
+                                    , function (tx, result) {
+                                        console.log('Inserted');
+                                    },
+                                    function (error) {
+                                        alert('Error occurred');
+                                    });
+                                });
+                                //-------------------------------------
+
+                            }//end valida parametros
+                           //-----------------------select------------------------------
+                                // myDB.transaction(function (transaction) {
+                                //    transaction.executeSql('SELECT * FROM parametros', [], function (tx, results) {
+                                //        var len = results.rows.length, i;
+                                    
+                                //        for (i = 0; i < len; i++) {
+                                //            alert( results.rows.item(i).parametro + "=" + results.rows.item(i).valor);
+                                //        }
+                                //    }, null);
+                                //});
+                            //-----------------------------------------------------------------------------
+
 }
 
 function exitFromApp() {
@@ -178,6 +343,7 @@ function validarNumeroTel() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImageTEL').style.display = 'none';
+                        alert("error2");
                         $.mobile.changePage('Error_Red.html'); return;
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImageTEL').style.display = 'none';
@@ -196,6 +362,7 @@ function callPhone() {
 }
 
 function realoadPage() {
+    alert("realoadPage");
     document.getElementById('btnReload').src = "images/refresh2.gif";
     //inicioPrimeraVez();
 
@@ -206,6 +373,7 @@ function realoadPage() {
         inicioPrimeraVez();
     } else {
         //alert("no es 1er inicio");
+        alert("error3");
         $.mobile.changePage('Error_Red.html');
     }
 };
@@ -498,6 +666,7 @@ function menuPadres() {
                 },
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
+                        alert("error4");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); $.mobile.changePage('BancaMovil.html'); return;
@@ -527,6 +696,7 @@ function menuHijos() {
                 },
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
+                        alert("error5");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); $.mobile.changePage('BancaMovil.html'); return;
@@ -554,6 +724,7 @@ function menuPaginas() {
                 },
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
+                        alert("error6");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); $.mobile.changePage('BancaMovil.html'); return;
@@ -907,6 +1078,7 @@ function getPreguntas1() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
+                        alert("error7");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -980,6 +1152,7 @@ function getPreguntas2() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
+                        alert("error8");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -1031,6 +1204,7 @@ function validarDatosCliente() {
                 },
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
+                        alert("error9");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); return;
@@ -1289,6 +1463,7 @@ function validarCuentasTerceros() {
                     },
                     error: function (jqXHR, exception) {
                         if (jqXHR.status === 0) {
+                            alert("error10");
                             $.mobile.changePage('Error_Red.html');
                         } else if (exception === 'timeout') {
                             alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); return;
@@ -1393,6 +1568,7 @@ function validarCuentasSPEI() {
                     },
                     error: function (jqXHR, exception) {
                         if (jqXHR.status === 0) {
+                            alert("error11");
                             $.mobile.changePage('Error_Red.html');
                         } else if (exception === 'timeout') {
                             alert('A ocurrido un error inesperado; intente de nuevo, o m\u00e1s tarde'); return;
@@ -2266,6 +2442,7 @@ function getEntreCuentasPropias() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
+                        alert("error12");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -2339,6 +2516,7 @@ function changeEntreCuentasPropias() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
+                        alert("error13");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -2409,6 +2587,7 @@ function getCuentasTerceros_Cuenta() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
+                        alert("error14");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -2478,6 +2657,7 @@ function getCuentasTerceros_Nombre() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
+                        alert("error15");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';
@@ -2530,6 +2710,7 @@ function obtenerNombreCuenta() {
                 error: function (jqXHR, exception) {
                     if (jqXHR.status === 0) {
                         document.getElementById('LoadingImage').style.display = 'none';
+                        alert("error16");
                         $.mobile.changePage('Error_Red.html');
                     } else if (exception === 'timeout') {
                         document.getElementById('LoadingImage').style.display = 'none';

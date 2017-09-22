@@ -37,7 +37,24 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                document.getElementById('txtUser').value = localStorage.getItem("CLIENTE");
+
+                var myDB;
+                //create or open db
+                //alert("homepage..");
+                myDB = window.sqlitePlugin.openDatabase({ name: "mySQLite.db", location: 'default' });
+                //-----------------------select------------------------------
+                myDB.transaction(function (transaction) {
+                    transaction.executeSql("SELECT valor FROM parametros where parametro='CLIENTE' ", [], function (tx, results) {
+                        var len = results.rows.length, i;
+
+                        for (i = 0; i < len; i++) {
+                            document.getElementById('txtUser').value = results.rows.item(i).valor;
+                        }
+                    }, null);
+                });
+                //-----------------------------------------------------------------------------
+
+                //document.getElementById('txtUser').value = localStorage.getItem("CLIENTE");
             });
         </script>
 
@@ -93,7 +110,7 @@
                     <td style='width:5%;'></td>
                     <td style='width:90%;' colspan='2'>
                         <button id="btnRecuperarContrasenia" data-mini="true" data-theme="b" 
-                                style=" font-size:18px;height:38px;padding: 0px 74px;margin-top: -2px;border-top: 1px solid #96d1f8; background: #c91010;background: -webkit-gradient(linear, left top, left bottom, from(#c91010), to(#FA5858));background: -webkit-linear-gradient(top, #c91010, #FA5858);border:transparent;" 
+                                style="font-size:18px;height:38px;padding: 0px 74px;margin-top: -2px;border-top: 1px solid #96d1f8; background: #c91010;background: -webkit-gradient(linear, left top, left bottom, from(#c91010), to(#FA5858));background: -webkit-linear-gradient(top, #c91010, #FA5858);border:transparent;" 
                                 class="btn button button:hover ui-btn ui-btn-b ui-shadow ui-corner-all ui-mini">
                             <div style="margin-right: -40px;">Recuperar contraseña</div>
 
