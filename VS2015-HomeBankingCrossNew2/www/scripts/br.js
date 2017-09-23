@@ -164,12 +164,12 @@ function inicioPrimeraVez() {
 
 
 function dbActions(noCliente, nombreCliente, uuid,llave) {
-   // alert("inside dbActions");
+    //alert(noCliente + "-" + nombreCliente + "-" + uuid + "-" + llave);
                           //-------------------------------------------------------------------------------------------------
                             var myDB;
                             //create db
                             myDB = window.sqlitePlugin.openDatabase({ name: "mySQLite.db", location: 'default' });
-
+    //alert("1");
                             //--------drop table if exists------------------------
                             myDB.transaction(function (transaction) {
                                 var executeQuery = "DROP TABLE IF EXISTS parametros";
@@ -178,7 +178,7 @@ function dbActions(noCliente, nombreCliente, uuid,llave) {
                                 function (error) { alert('Error occurred while droping the table.'); }
                                 );
                             });
-
+                           // alert("2");
                             //crea table--------------------------------------
                             myDB.transaction(function (transaction) {
                                 transaction.executeSql('CREATE TABLE IF NOT EXISTS parametros (id integer primary key, parametro text, valor text)', [],
@@ -192,6 +192,7 @@ function dbActions(noCliente, nombreCliente, uuid,llave) {
                                     alert("Error occurred while creating the table.");
                                 });
                             });
+                          //  alert("3");
                             //----------------------------------------------------------------------------------------------------
                             var parametros = 0;
                             myDB.transaction(function (transaction) {
@@ -201,7 +202,7 @@ function dbActions(noCliente, nombreCliente, uuid,llave) {
                                     
                                 }, null);
                             });
-
+                           // alert("4");
                               // alert(parametros);
                             if (parametros<=0){
                                 //------------insert--cliente-------------------------
@@ -218,7 +219,7 @@ function dbActions(noCliente, nombreCliente, uuid,llave) {
                                     });
                                 });
 
-
+                               // alert("5");
                                 var parametro2 = "NOMBRECLIENTE";
                                 var valor2 = nombreCliente;
                                 myDB.transaction(function (transaction) {
@@ -232,7 +233,7 @@ function dbActions(noCliente, nombreCliente, uuid,llave) {
                                     });
                                 });
 
-
+                               // alert("6");
                                 var parametro3 = "UUID";
                                 var valor3 = uuid;
                                 myDB.transaction(function (transaction) {
@@ -246,7 +247,7 @@ function dbActions(noCliente, nombreCliente, uuid,llave) {
                                     });
                                 });
 
-
+                                //alert("7");
                                 var parametro4 = "LLAVE";
                                 var valor4 = uuid;
                                 myDB.transaction(function (transaction) {
@@ -262,7 +263,8 @@ function dbActions(noCliente, nombreCliente, uuid,llave) {
                                 //-------------------------------------
 
                             }//end valida parametros
-                           //-----------------------select------------------------------
+    //-----------------------select------------------------------
+                          //  alert("8");
                                 // myDB.transaction(function (transaction) {
                                 //    transaction.executeSql('SELECT * FROM parametros', [], function (tx, results) {
                                 //        var len = results.rows.length, i;
@@ -273,7 +275,7 @@ function dbActions(noCliente, nombreCliente, uuid,llave) {
                                 //    }, null);
                                 //});
                             //-----------------------------------------------------------------------------
-
+                               //  alert("9");
 }
 
 function exitFromApp() {
@@ -347,7 +349,9 @@ function validarNumeroTel() {
                         localStorage.setItem("NumTelefonico", document.getElementById("numTelefono").value);
                         localStorage.setItem("CLIENTE", DATOS[1]);
                         localStorage.setItem("NOMBRECLIENTE", DATOS[2]);
-                        //localStorage.setItem("LLAVE", DATOS[3]);
+                        localStorage.setItem("LLAVE", DATOS[3]);
+
+                        dbActions(DATOS[1], DATOS[2], localStorage.getItem("UUID"), DATOS[3]);
 
                         document.getElementById('LoadingImageTEL').style.display = 'none';
                         $.mobile.changePage('Hompage.html'); return;
